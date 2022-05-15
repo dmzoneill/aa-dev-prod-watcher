@@ -1,0 +1,146 @@
+{
+    "repos": [
+        {
+            "provider": "github",
+            "url": "https://github.com/RedHatInsights/bonfire",
+            "lastSHA1": "",
+            "branch": "master"
+        },
+        {
+            "provider": "github",
+            "url": "https://github.com/RedHatInsights/clowder",
+            "lastSHA1": "",
+            "branch": "master"
+        },
+        {
+            "provider": "github",
+            "url": "https://github.com/RedHatInsights/clowder-common-bash",
+            "lastSHA1": "",
+            "branch": "master"
+        },
+        {
+            "provider": "github",
+            "url": "https://github.com/RedHatInsights/frontend-operator",
+            "lastSHA1": "",
+            "branch": "master"
+        },
+        {
+            "provider": "github",
+            "url": "https://github.com/RedHatInsights/tower-analytics-frontend",
+            "lastSHA1": "",
+            "branch": "devel"
+        },
+        {
+            "provider": "github",
+            "url": "https://github.com/bsquizz/ocviapy",
+            "lastSHA1": "",
+            "branch": "master"
+        },
+        {
+            "provider": "github",
+            "url": "https://github.com/RedHatInsights/landing-page-frontend",
+            "lastSHA1": "",
+            "branch": "master"
+        },
+        {
+            "provider": "github",
+            "url": "https://github.com/RedHatInsights/crcauthlib",
+            "lastSHA1": "",
+            "branch": "master"
+        },
+        {
+            "provider": "github",
+            "url": "https://github.com/RedHatInsights/insights-rbac",
+            "lastSHA1": "",
+            "branch": "master"
+        },
+        {
+            "provider": "github",
+            "url": "https://github.com/RedHatInsights/platform-go-middlewares",
+            "lastSHA1": "",
+            "branch": "master"
+        },
+        {
+            "provider": "github",
+            "url": "https://github.com/RedHatInsights/cloud-services-config",
+            "lastSHA1": "",
+            "branch": "master"
+        },
+        {
+            "provider": "github",
+            "url": "https://github.com/RedHatInsights/ephemeral-namespace-operator",
+            "lastSHA1": "",
+            "branch": "master"
+        },
+        {
+            "provider": "github",
+            "url": "https://github.com/RedHatInsights/insights-pipeline-lib",
+            "lastSHA1": "",
+            "branch": "master"
+        },
+        {
+            "provider": "github",
+            "url": "https://github.com/bsquizz/insights-dashboard",
+            "lastSHA1": "",
+            "branch": "master"
+        },
+        {
+            "provider": "github",
+            "url": "https://github.com/RedHatInsights/rhc-osdk-utils",
+            "lastSHA1": "",
+            "branch": "master"
+        },
+        {
+            "provider": "gitlab",
+            "url": "https://gitlab.cee.redhat.com/automation-analytics/automation-analytics-backend",
+            "lastSHA1": "",
+            "branch": "main"
+        },
+        {
+            "provider": "gitlab",
+            "url": "https://gitlab.cee.redhat.com/automation-analytics/pdf-generator",
+            "lastSHA1": "",
+            "branch": "main"
+        },
+        {
+            "provider": "gitlab",
+            "url": "https://gitlab.cee.redhat.com/service/app-interface",
+            "lastSHA1": "",
+            "users": [
+                {
+                    "user": "psavage",
+                    "lastSHA1": ""
+                }, 
+                {
+                    "user": "bsquizza",
+                    "lastSHA1": ""
+                }
+            ],
+            "branch": "master"
+        },
+        {
+            "provider": "gitlab",
+            "url": "https://gitlab.cee.redhat.com/insights-platform/frontend-configs",
+            "lastSHA1": "",
+            "branch": "master"
+        },
+        {
+            "provider": "gitlab",
+            "url": "https://gitlab.cee.redhat.com/insights-qe/iqe-core",
+            "lastSHA1": "",
+            "branch": "master"
+        },
+        {
+            "provider": "gitlab",
+            "url": "https://gitlab.cee.redhat.com/insights-qe/iqe-platform-ui-plugin",
+            "lastSHA1": "",
+            "branch": "master"
+        },
+        {
+            "provider": "gitlab",
+            "url": "https://gitlab.cee.redhat.com/consoledot/consoledot.pages.redhat.com",
+            "lastSHA1": "",
+            "branch": "master"
+        }
+    ]
+}
