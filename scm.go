@@ -2,101 +2,97 @@ package main
 
 import (
 	"bytes"
-	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"os"
 	"os/exec"
+	"strconv"
 	"strings"
 )
 
-type Repos struct {
-	Repos []Repo `json:"repos"`
-}
+func execute(app string, dir string, args []string) string {
+	path, err := os.Getwd()
+	if err != nil {
+		log.Println(err)
+		os.Exit(2)
+	}
 
-type User struct {
-	Username string `json:"user"`
-	LastSHA1 string `json:"lastSHA1"`
-}
+	cmd := exec.Command(app, args...)
 
-type Repo struct {
-	Provider string `json:"provider"`
-	Url      string `json:"url"`
-	Branch   string `json:"branch"`
-	LastSHA1 string `json:"lastSHA1"`
-	Users    []User `json:"users"`
+	var out bytes.Buffer
+	var stderr bytes.Buffer
+	cmd.Stdout = &out
+	cmd.Stderr = &stderr
+	cmd.Dir = path + "/repos/" + dir
+	err1 := cmd.Run()
+
+	if err != nil {
+		fmt.Println(fmt.Sprint(err1) + ": " + stderr.String())
+		os.Exit(1)
+	}
+
+	return out.String()
 }
 
 func clone(name string, url string) {
-	path, err := os.Getwd()
-	if err != nil {
-		log.Println(err)
-	}
-
-	app := "/usr/bin/git"
-	arg0 := "clone"
-	arg1 := url
-	arg2 := path + "/repos/" + name
-
-	// fmt.Println(app + " " + arg0 + " " + arg1 + " " + arg2)
-	cmd := exec.Command(app, arg0, arg1, arg2)
-
-	var out bytes.Buffer
-	var stderr bytes.Buffer
-	cmd.Stdout = &out
-	cmd.Stderr = &stderr
-	err1 := cmd.Run()
-	if err1 != nil {
-		fmt.Println(fmt.Sprint(err) + ": " + stderr.String())
-		os.Exit(47)
-	}
+	execute("/usr/bin/git", name, []string{"clone", url})
 }
 
 func pull(name string) {
-	path, err := os.Getwd()
-	if err != nil {
-		log.Println(err)
+	execute("/usr/bin/git", name, []string{"pull"})
+}
+
+func getLastSHA1(name string) string {
+	return strings.TrimSuffix(execute("/usr/bin/git", name, []string{"rev-parse", "--verify", "HEAD"}), "\n")
+}
+
+func getLastSHA1User(name string, user string) string {
+	return strings.TrimSuffix(execute("/usr/bin/git", name, []string{"log", "-i", "--author" + user, "-n", "1", "--pretty=format:\"%H\""}), "\n")[1:41]
+}
+
+func print_commits(name string, url string, sha1 string, provider string) {
+	commits := strings.Split(execute("/usr/bin/git", name, []string{"rev-list", sha1 + "..HEAD"}), "\n")
+	if len(commits) > 0 {
+		fmt.Printf("\n")
 	}
-
-	app := "/usr/bin/git"
-	arg0 := "pull"
-
-	// fmt.Println(app + " " + arg0)
-	cmd := exec.Command(app, arg0)
-	cmd.Dir = path + "/repos/" + name
-
-	var out bytes.Buffer
-	var stderr bytes.Buffer
-	cmd.Stdout = &out
-	cmd.Stderr = &stderr
-	err1 := cmd.Run()
-
-	if err1 != nil {
-		fmt.Println(fmt.Sprint(err) + ": " + stderr.String())
-		os.Exit(37)
+	for i := 0; i < len(commits)-1; i++ {
+		if provider == "github" {
+			fmt.Printf("     >> %s/commit/%s\n", url, commits[i])
+		} else {
+			fmt.Printf("     >> %s/-/commit/%s\n", url, commits[i])
+		}
+	}
+	if len(commits) > 0 {
+		fmt.Printf("\n")
 	}
 }
 
 func update_repos() {
-	jsonFile, err := os.Open("watch.json")
-	if err != nil {
-		fmt.Println(err)
-	}
-	defer jsonFile.Close()
-	byteValue, _ := ioutil.ReadAll(jsonFile)
-	var repos Repos
-	json.Unmarshal(byteValue, &repos)
 
 	for i := 0; i < len(repos.Repos); i++ {
 		parts := strings.Split(repos.Repos[i].Url, "/")
+		name := parts[len(parts)-1]
+
+		if _, err := os.Stat("repos/" + name); os.IsExist(err) {
+			pull(name)
+		}
 
 		if len(repos.Repos[i].Users) == 0 {
-			fmt.Printf("Checking: %-7s %-8s %-8s %-45s %s \n", repos.Repos[i].Provider, repos.Repos[i].Branch, "", repos.Repos[i].LastSHA1, repos.Repos[i].Url)
+			last_commit := getLastSHA1(name)
+			if repos.Repos[i].LastSHA1 == "" {
+				repos.Repos[i].LastSHA1 = last_commit
+			}
+			fmt.Printf(" %2s) %-7s %-7s %-9s %-41s %s \n", strconv.Itoa(i), repos.Repos[i].Provider, repos.Repos[i].Branch, "", repos.Repos[i].LastSHA1, repos.Repos[i].Url)
+			if last_commit != repos.Repos[i].LastSHA1 {
+				print_commits(name, repos.Repos[i].Url, repos.Repos[i].LastSHA1, repos.Repos[i].Provider)
+			}
 		}
 
 		for t := 0; t < len(repos.Repos[i].Users); t++ {
-			fmt.Printf("Checking: %-7s %-8s %-8s %-45s %s \n", repos.Repos[i].Provider, repos.Repos[i].Branch, repos.Repos[i].Users[t].Username, repos.Repos[i].Users[t].LastSHA1, repos.Repos[i].Url)
+			if repos.Repos[i].Users[t].LastSHA1 == "" {
+				repos.Repos[i].Users[t].LastSHA1 = getLastSHA1User(name, repos.Repos[i].Users[t].Username)
+			}
+			fmt.Printf(" %2s) %-7s %-7s %-9s %-41s %s \n", strconv.Itoa(i), repos.Repos[i].Provider, repos.Repos[i].Branch, repos.Repos[i].Users[t].Username, repos.Repos[i].Users[t].LastSHA1, repos.Repos[i].Url)
 		}
 
 		if _, err := os.Stat("repos"); os.IsNotExist(err) {
@@ -105,20 +101,14 @@ func update_repos() {
 			}
 		}
 
-		if _, err := os.Stat("repos/" + parts[len(parts)-1]); os.IsNotExist(err) {
-			clone(parts[len(parts)-1], repos.Repos[i].Url)
-			if _, err := os.Stat("repos/" + parts[len(parts)-1]); os.IsNotExist(err) {
-				os.Exit(27)
+		if _, err := os.Stat("repos/" + name); os.IsNotExist(err) {
+			clone(name, repos.Repos[i].Url)
+			if _, err := os.Stat("repos/" + name); os.IsNotExist(err) {
+				os.Exit(3)
 			}
 		}
 
-		pull(parts[len(parts)-1])
 	}
 
-	// Convert structs to JSON.
-	data, err := json.Marshal(repos)
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Printf("%s\n", data)
+	save_json()
 }

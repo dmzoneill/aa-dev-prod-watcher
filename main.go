@@ -1,78 +1,121 @@
 package main
 
 import (
+	"bufio"
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"log"
 	"net/http"
-	"strconv"
+	"os"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
 
-type (
-	user struct {
-		ID   int    `json:"id"`
-		Name string `json:"name"`
-	}
-)
-
-var (
-	users = map[int]*user{}
-	seq   = 1
-)
-
-//----------
-// Handlers
-//----------
-
-func createUser(c echo.Context) error {
-	u := &user{
-		ID: seq,
-	}
-	if err := c.Bind(u); err != nil {
-		return err
-	}
-	users[u.ID] = u
-	seq++
-	return c.JSON(http.StatusCreated, u)
+type Repos struct {
+	Repos []Repo `json:"repos"`
 }
 
-func getUser(c echo.Context) error {
-	id, _ := strconv.Atoi(c.Param("id"))
-	return c.JSON(http.StatusOK, users[id])
+type User struct {
+	Username string `json:"user"`
+	LastSHA1 string `json:"lastSHA1"`
 }
 
-func updateUser(c echo.Context) error {
-	u := new(user)
-	if err := c.Bind(u); err != nil {
-		return err
+type Repo struct {
+	Provider string `json:"provider"`
+	Url      string `json:"url"`
+	Branch   string `json:"branch"`
+	LastSHA1 string `json:"lastSHA1"`
+	Users    []User `json:"users"`
+}
+
+var repos Repos
+
+func getConfig(c echo.Context) error {
+	return c.JSON(http.StatusOK, repos)
+}
+
+func getConfigPretty(c echo.Context) error {
+	return c.JSONPretty(http.StatusOK, repos, "  ")
+}
+
+func updateConfig(c echo.Context) error {
+	return c.JSON(http.StatusOK, "{}")
+}
+
+func wget() {
+
+	resp, err := http.Get("http://gobyexample.com")
+	if err != nil {
+		panic(err)
 	}
-	id, _ := strconv.Atoi(c.Param("id"))
-	users[id].Name = u.Name
-	return c.JSON(http.StatusOK, users[id])
+	defer resp.Body.Close()
+
+	fmt.Println("Response status:", resp.Status)
+
+	scanner := bufio.NewScanner(resp.Body)
+	for i := 0; scanner.Scan() && i < 5; i++ {
+		fmt.Println(scanner.Text())
+	}
+
+	if err := scanner.Err(); err != nil {
+		panic(err)
+	}
 }
 
-func deleteUser(c echo.Context) error {
-	id, _ := strconv.Atoi(c.Param("id"))
-	delete(users, id)
-	return c.NoContent(http.StatusNoContent)
+func save_json() {
+	f, err := os.Create("last.json")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer f.Close()
+
+	// Convert structs to JSON.
+	data, err := json.Marshal(repos)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	_, err2 := f.Write(data)
+
+	if err2 != nil {
+		log.Fatal(err2)
+	}
 }
 
 func main() {
 
-	update()
+	jsonFile, err := os.Open("watch.json")
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer jsonFile.Close()
+	byteValue, _ := ioutil.ReadAll(jsonFile)
+	json.Unmarshal(byteValue, &repos)
+
+	fmt.Printf("\n")
+	fmt.Printf("	██████  ▄████▄   ███▄ ▄███▓    █     █░ ▄▄▄     ▄▄▄█████▓ ▄████▄   ██░ ██ ▓█████  ██▀███  \n")
+	fmt.Printf("  ▒██    ▒ ▒██▀ ▀█  ▓██▒▀█▀ ██▒   ▓█░ █ ░█░▒████▄   ▓  ██▒ ▓▒▒██▀ ▀█  ▓██░ ██▒▓█   ▀ ▓██ ▒ ██▒\n")
+	fmt.Printf("  ░ ▓██▄   ▒▓█    ▄ ▓██    ▓██░   ▒█░ █ ░█ ▒██  ▀█▄ ▒ ▓██░ ▒░▒▓█    ▄ ▒██▀▀██░▒███   ▓██ ░▄█ ▒\n")
+	fmt.Printf("	▒   ██▒▒▓▓▄ ▄██▒▒██    ▒██    ░█░ █ ░█ ░██▄▄▄▄██░ ▓██▓ ░ ▒▓▓▄ ▄██▒░▓█ ░██ ▒▓█  ▄ ▒██▀▀█▄  \n")
+	fmt.Printf("  ▒██████▒▒▒ ▓███▀ ░▒██▒   ░██▒   ░░██▒██▓  ▓█   ▓██▒ ▒██▒ ░ ▒ ▓███▀ ░░▓█▒░██▓░▒████▒░██▓ ▒██▒\n")
+	fmt.Printf("  ▒ ▒▓▒ ▒ ░░ ░▒ ▒  ░░ ▒░   ░  ░   ░ ▓░▒ ▒   ▒▒   ▓▒█░ ▒ ░░   ░ ░▒ ▒  ░ ▒ ░░▒░▒░░ ▒░ ░░ ▒▓ ░▒▓░\n")
+	fmt.Printf("  ░ ░▒  ░ ░  ░  ▒   ░  ░      ░     ▒ ░ ░    ▒   ▒▒ ░   ░      ░  ▒    ▒ ░▒░ ░ ░ ░  ░  ░▒ ░ ▒░\n")
+	fmt.Printf("  ░  ░  ░  ░        ░      ░        ░   ░    ░   ▒    ░      ░         ░  ░░ ░   ░     ░░   ░ \n")
+	fmt.Printf("		░  ░ ░             ░          ░          ░  ░        ░ ░       ░  ░  ░   ░  ░   ░     \n")
+	fmt.Printf("		   ░                                                 ░                                \n")
+	fmt.Printf("\n")
+
+	update_repos()
 
 	e := echo.New()
-
-	// Middleware
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
-
-	// Routes
-	e.POST("/users", createUser)
-	e.GET("/users/:id", getUser)
-	e.PUT("/users/:id", updateUser)
-	e.DELETE("/users/:id", deleteUser)
-
-	// Start server
+	e.GET("/config/", getConfig)
+	e.GET("/config/pretty", getConfigPretty)
+	e.PUT("/config/", updateConfig)
 	e.Logger.Fatal(e.Start(":1323"))
 }
