@@ -1,0 +1,106 @@
+.config {
+    height: 800px;
+    width: 1000px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 10px;
+    resize: none;
+}
+
+.main_wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+}
+
+.git_image {
+    margin-right: 8px;
+    margin-bottom: -3px;
+}
+
+.saving_image {
+    margin-bottom: -3px;
+}
+
+.commit_image {
+    margin-right: 5px;
+    margin-bottom: -3px;
+}
+
+.repo_list {
+    list-style-type: none;
+    margin-left: 0px;
+    padding-inline-start: 0px;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+}
+
+.commit_list {
+    list-style-type: none;
+    margin-left: 8px;
+    margin-block-start: 5px;
+    margin-block-end: 5px;
+    padding-inline-start: 15px;
+    border-left: 1px solid #cccccc;
+}
+
+.commitByLine {
+    margin-left: 0px;
+    margin-top: 0px;
+    padding-inline-start: 35px;
+    font-size: 11pt;
+}
+
+.review_button {
+    margin-left: 35px;
+    margin-block-start: 5px;
+    margin-block-end: 5px;
+}
+
+.logo {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0px;
+    font-size: 10pt;
+    width: 850px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.linkRepo {
+    font-size: 14pt;
+    color: #111111;
+    font-weight: 500;
+}
+
+.linkRepo:visited {
+    font-size: 14pt;
+    color: #333333;
+
+}
+
+.linkCommit {
+    font-size: 12pt;
+    color: #111177;
+}
+
+.linkCommit:visited {
+    font-size: 12pt;
+    color: #333377;
+}
+
+
+.commitByLineDate {
+    font-weight: 600;
+    font-size: 10pt;
+}
+
+.commitByLineUser {
+    font-weight: 600;
+    font-size: 10pt;
+}
