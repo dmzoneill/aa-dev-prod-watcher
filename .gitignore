@@ -1,1 +1,2 @@
-repos/**
+**/repos/**
+**/node_modules/**
