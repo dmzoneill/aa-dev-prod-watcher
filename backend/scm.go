@@ -95,7 +95,7 @@ func print_commits(index int, name string, url string, sha1 string, provider str
 	}
 	for i := 0; i < len(commits)-1; i++ {
 		if isCommitInCommits(string(commits[i]), repos.Repos[index].ReviewCommits) {
-			fmt.Printf(" .. dupe\n")
+			fmt.Printf("     .. dupe\n")
 			continue
 		}
 		if provider == "github" {
@@ -120,18 +120,18 @@ func print_commits_user(index int, user_index int, name string, url string, user
 		fmt.Printf("\n")
 	}
 	for i := 0; i < len(commits)-1; i++ {
-		if isCommitInCommits(string(commits[i]), repos.Repos[index].ReviewCommits) {
-			fmt.Printf(" .. dupe\n")
+		if isCommitInCommits(string(commits[i])[1:41], repos.Repos[index].ReviewCommits) {
+			fmt.Printf("     .. dupe\n")
 			continue
 		}
 		if provider == "github" {
-			review := getCommitTitle(name, string(commits[i])) + ",#," + fmt.Sprintf("%s/commit/%s", url, string(commits[i]))
+			review := getCommitTitle(name, string(commits[i])[1:41]) + ",#," + fmt.Sprintf("%s/commit/%s", url, string(commits[i])[1:41])
 			repos.Repos[index].Users[user_index].ReviewCommits = append(repos.Repos[index].Users[user_index].ReviewCommits, review)
-			fmt.Printf("     >> %s/commit/%s\n", url, string(commits[i]))
+			fmt.Printf("     >> %s/commit/%s\n", url, string(commits[i])[1:41])
 		} else {
-			review := getCommitTitle(name, string(commits[i])) + ",#," + fmt.Sprintf("%s/-/commit/%s", url, string(commits[i]))
+			review := getCommitTitle(name, string(commits[i])[1:41]) + ",#," + fmt.Sprintf("%s/-/commit/%s", url, string(commits[i])[1:41])
 			repos.Repos[index].Users[user_index].ReviewCommits = append(repos.Repos[index].Users[user_index].ReviewCommits, review)
-			fmt.Printf("     >> %s/-/commit/%s\n", url, string(commits[i]))
+			fmt.Printf("     >> %s/-/commit/%s\n", url, string(commits[i])[1:41])
 		}
 	}
 	if len(commits) > 0 {
@@ -141,6 +141,13 @@ func print_commits_user(index int, user_index int, name string, url string, user
 }
 
 func update_repos() {
+
+	fmt.Printf("\n")
+	fmt.Printf(" " + strings.Repeat("=", 80) + "\n")
+	fmt.Printf(" Updating.... \n")
+	fmt.Printf(" " + strings.Repeat("=", 80) + "\n")
+	fmt.Printf("\n")
+
 	for i := 0; i < len(repos.Repos); i++ {
 		parts := strings.Split(repos.Repos[i].Url, "/")
 		name := parts[len(parts)-1]

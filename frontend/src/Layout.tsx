@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { useRef, useState, useEffect } from 'react';
+import Countdown from 'react-countdown';
+import { StyledEngineProvider } from '@mui/material/styles';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
@@ -8,6 +10,7 @@ import logo from './logo.txt';
 import git_image from './git.png';
 import commit_image from './commit.png';
 import loading_image from './loading.gif';
+import { isTemplateSpan } from 'typescript';
 
 type User = {
     user: string,
@@ -88,38 +91,86 @@ function Commits() {
         review_commit();
     }
 
+    const RepoUserCommits = (props) => {
+        return (
+            <li key={Math.random()}>
+            {
+                props.user.reviewcommits?.map((user_commit, user_commit_index, user_reviewcommits) => {
+                    let [user_title, user_url] = user_commit.split(",#,");
+                    let [user_commit_date, user_commit_title, commit_user] = user_title.split("||");
+                    let user_commit_ref = props.index.toString() + "_" + props.user_index.toString() + "_" +  user_commit_index.toString();
+
+                    return (
+                        <div key={Math.random()}>
+                            <span>
+                                <img src={commit_image} alt="commit image" width="14" height="14" className="commit_image"/>
+                                <a target="_blank" title={user_commit_title} href={user_url}  className="linkCommit">{user_commit_title}</a>
+                                <br/>
+                                <span className="commitByLine">on <b className="commitByLineDate">{user_commit_date}</b> by <b className="commitByLineUser">{commit_user}</b></span>
+                            </span>
+                            <span className="review_span">
+                            {
+                                user_reviewcommits.length - 1 === user_commit_index ? <button className='review_button' id={user_commit_ref} onClick={reviewedCommit}>Reviewed</button> : <span className='review_skip'>...</span>
+                            }
+                            </span>
+                        </div>
+                    )
+                })
+            }
+            </li>
+        )
+    }
+
+    const RepoUsers = (props) => {
+        return (
+            <ol key={Math.random()} className="user_commit_list">
+            {
+                props.users?.map((user, user_index, users) => {
+                    return <RepoUserCommits key={Math.random()} index={props.index} user={user} user_index={user_index} users={users} />
+                })
+            }
+            </ol>
+        )
+    }
+
+    const RepoCommits = (props) => {
+        return (
+            <ol key={Math.random()} className="commit_list">
+            {                                                
+                props.item.reviewcommits?.map((commit, commit_index, reviewcommits) => {
+                    let [title, url] = commit.split(",#,");
+                    let [date, commit_title, user] = title.split("||");
+                    let commit_ref = props.index.toString() + "_" + commit_index.toString();
+                    return (
+                        <li key={Math.random()}> 
+                            <span>                                           
+                                <img src={commit_image} alt="commit image" width="14" height="14" className="commit_image"/>
+                                <a target="_blank" title={commit_title} href={url}  className="linkCommit">{commit_title}</a>
+                                <br/>
+                                <span className="commitByLine">on <b className="commitByLineDate">{date}</b> by <b className="commitByLineUser">{user}</b></span>
+                            </span>
+                            <span className="review_span">
+                            {
+                                reviewcommits.length - 1 === commit_index ? <button className='review_button' id={commit_ref} onClick={reviewedCommit}>Reviewed</button> : <span className='review_skip'>...</span>
+                            }
+                            </span>
+                        </li>
+                    )
+                })
+            }
+            </ol> 
+        )
+    }
+
     return (
         <>
-        <ol className="repo_list">
+        <ol key={Math.random()} className="repo_list">
         {
             result.map((item, index) => 
-                <li key={index}><img src={git_image} alt="git logo" width="16" height="16" className="git_image"/>
+                <li key={Math.random()}><img src={git_image} alt="git logo" width="16" height="16" className="git_image"/>
                     <a target="_blank" title={item.url} href={item.url} className="linkRepo">{item.url}</a>
                     {
-                        item.reviewcommits !== null ? 
-                        
-                            <ol className="commit_list">
-                            {                                                
-                                item.reviewcommits?.map((commit, commit_index, reviewcommits) => {
-                                    let [title, url] = commit.split(",#,");
-                                    let [date, commit_title, user] = title.split("||");
-                                    let commit_ref = index.toString() + "_" + commit_index.toString();
-                                    return (
-                                        <li key={commit_index}><img src={commit_image} alt="commit image" width="16" height="16" className="commit_image"/>                                            
-                                            <a target="_blank" title={commit_title} href={url}  className="linkCommit">{commit_title}</a>
-                                            <br/>
-                                            <span className="commitByLine">on <b className="commitByLineDate">{date}</b> by <b className="commitByLineUser">{user}</b></span>
-                                            <br/>
-                                            {
-                                                reviewcommits.length - 1 === commit_index ? <button className='review_button' id={commit_ref} onClick={reviewedCommit}>Reviewed</button> : ""
-                                            }
-                                        </li>
-                                    )
-                                })
-                            }
-                            </ol>
-                            
-                        : ""
+                        item.reviewcommits !== null ? <RepoCommits key={Math.random()} index={index} item={item} /> : <RepoUsers key={Math.random()} index={index} users={item.users} />
                     }
                 </li>
             )                            
@@ -198,6 +249,14 @@ function ConfigState() {
     );
 }
 
+const renderer = ({ minutes, seconds, completed }) => {
+    if (completed) {
+        window.location.reload();
+    } else {
+        return <div className='countdown'>Updating in {minutes}:{seconds}</div>;
+    }
+};
+
 export const Layout = () => {
     const [value, setValue] = React.useState(0);
 
@@ -207,24 +266,27 @@ export const Layout = () => {
 
     return (
         <div className="main_wrapper"><pre className='logo'>{logo}</pre>
-            <Box sx={{ width: '100%' }}>
-                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                    <Tab label="Latest commits" {...a11yProps(0)} />
-                    <Tab label="Configuration" {...a11yProps(1)} />
-                    <Tab label="State" {...a11yProps(2)} />
-                </Tabs>
+            <Countdown date={Date.now() + 900000} renderer={renderer}/>
+            <StyledEngineProvider injectFirst>
+                <Box sx={{ width: '100%' }}>
+                    <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                    <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                        <Tab label="Latest commits" {...a11yProps(0)} />
+                        <Tab label="Configuration" {...a11yProps(1)} />
+                        <Tab label="State" {...a11yProps(2)} />
+                    </Tabs>
+                    </Box>
+                    <TabPanel value={value} index={0}>
+                        <Commits />
+                    </TabPanel>
+                    <TabPanel value={value} index={1}>
+                        <Config />
+                    </TabPanel>
+                    <TabPanel value={value} index={2}>
+                        <ConfigState />
+                    </TabPanel>
                 </Box>
-                <TabPanel value={value} index={0}>
-                    <Commits />
-                </TabPanel>
-                <TabPanel value={value} index={1}>
-                    <Config />
-                </TabPanel>
-                <TabPanel value={value} index={2}>
-                    <ConfigState />
-                </TabPanel>
-            </Box>
+            </StyledEngineProvider>
         </div>
     );
 }
