@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { useRef, useState, useEffect } from 'react';
 import Countdown from 'react-countdown';
-import { StyledEngineProvider } from '@mui/material/styles';
+import { StyledEngineProvider, ThemeProvider, createTheme } from '@mui/material/styles';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
 import './style.css';
 import logo from './logo.txt';
 import git_image from './git.png';
@@ -110,7 +112,7 @@ function Commits() {
                             </span>
                             <span className="review_span">
                             {
-                                user_reviewcommits.length - 1 === user_commit_index ? <button className='review_button' id={user_commit_ref} onClick={reviewedCommit}>Reviewed</button> : <span className='review_skip'>...</span>
+                                user_reviewcommits.length - 1 === user_commit_index ? <Button variant="outlined" className='review_button' id={user_commit_ref} onClick={reviewedCommit}>Reviewed</Button> : <span className='review_skip'>...</span>
                             }
                             </span>
                         </div>
@@ -151,7 +153,9 @@ function Commits() {
                             </span>
                             <span className="review_span">
                             {
-                                reviewcommits.length - 1 === commit_index ? <button className='review_button' id={commit_ref} onClick={reviewedCommit}>Reviewed</button> : <span className='review_skip'>...</span>
+                                reviewcommits.length - 1 === commit_index ? 
+                                    <Button variant="outlined" className='review_button' id={commit_ref} onClick={reviewedCommit}>Reviewed</Button> 
+                                : <span className='review_skip'>...</span>
                             }
                             </span>
                         </li>
@@ -215,13 +219,19 @@ function Config() {
     return (
         <>
         <form ref={formRef} onSubmit={saveConfig}>
-            <button type="submit">
+            <Button variant="contained" type="submit">
             {
                 loading ? <img src={loading_image} alt="commit image" width="16" height="16" id="saving_image" /> : "Save"
             }
-            </button>
+            </Button>
             <br/><br/>
-            <textarea name="json_config" className="config" defaultValue={pretty}/>
+            <TextareaAutosize
+                aria-label="empty textarea"
+                placeholder="Empty"
+                defaultValue={pretty}
+                className="config"
+                name="json_config"
+            />
         </form>
         </>
     );
@@ -244,7 +254,7 @@ function ConfigState() {
 
     return (
         <>
-        <textarea name="state_config" className="config" defaultValue={stateConfig}/>
+        <pre name="state_config" className="configState">{stateConfig}</pre>
         </>
     );
 }
@@ -257,6 +267,12 @@ const renderer = ({ minutes, seconds, completed }) => {
     }
 };
 
+const darkTheme = createTheme({
+    palette: {
+      mode: 'dark',
+    },
+});
+
 export const Layout = () => {
     const [value, setValue] = React.useState(0);
 
@@ -267,26 +283,28 @@ export const Layout = () => {
     return (
         <div className="main_wrapper"><pre className='logo'>{logo}</pre>
             <Countdown date={Date.now() + 900000} renderer={renderer}/>
-            <StyledEngineProvider injectFirst>
-                <Box sx={{ width: '100%' }}>
-                    <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                    <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                        <Tab label="Latest commits" {...a11yProps(0)} />
-                        <Tab label="Configuration" {...a11yProps(1)} />
-                        <Tab label="State" {...a11yProps(2)} />
-                    </Tabs>
+            <ThemeProvider theme={darkTheme}>
+                <StyledEngineProvider injectFirst>
+                    <Box sx={{ width: '100%' }}>
+                        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                            <Tab label="Latest commits" {...a11yProps(0)} />
+                            <Tab label="Configuration" {...a11yProps(1)} />
+                            <Tab label="State" {...a11yProps(2)} />
+                        </Tabs>
+                        </Box>
+                        <TabPanel value={value} index={0}>
+                            <Commits />
+                        </TabPanel>
+                        <TabPanel value={value} index={1}>
+                            <Config />
+                        </TabPanel>
+                        <TabPanel value={value} index={2}>
+                            <ConfigState />
+                        </TabPanel>
                     </Box>
-                    <TabPanel value={value} index={0}>
-                        <Commits />
-                    </TabPanel>
-                    <TabPanel value={value} index={1}>
-                        <Config />
-                    </TabPanel>
-                    <TabPanel value={value} index={2}>
-                        <ConfigState />
-                    </TabPanel>
-                </Box>
-            </StyledEngineProvider>
+                </StyledEngineProvider>
+            </ThemeProvider>
         </div>
     );
 }
