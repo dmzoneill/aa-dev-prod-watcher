@@ -1,13 +1,35 @@
-.config {
-    height: 800px;
+body {
+    background-color: #181a1b;
+    font-family: "Courier New", monospace !important
+}
+
+.configState {
     width: 950px;
     padding: 12px 20px;
     box-sizing: border-box;
-    border: 2px solid #ccc;
+    border: 1px solid rgb(55, 60, 62);
     border-radius: 4px;
-    background-color: #f8f8f8;
-    font-size: 10px;
+    background-color: rgb(36, 39, 41);
     resize: none;
+    font-family: "Courier New", monospace;
+    color: rgb(232, 230, 227);
+    padding: 20px;
+    font-size: 16px;
+}
+
+.config {
+    width: 950px;
+    height: 1200px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 1px solid rgb(55, 60, 62);
+    border-radius: 4px;
+    background-color: rgb(36, 39, 41);
+    resize: none;
+    font-family: "Courier New", monospace;
+    color: rgb(232, 230, 227);
+    padding: 20px;
+    font-size: 16px;
 }
 
 .main_wrapper {
@@ -64,7 +86,7 @@
 .commit_list li:hover {
     margin-top: 3px;
     margin-bottom: 3px;
-    background-color: #efefef;
+    background-color: #222222;
 }
 
 .user_commit_list {
@@ -88,20 +110,22 @@
 .user_commit_list li:hover {
     margin-top: 3px;
     margin-bottom: 3px;
-    background-color: #efefef;
+    background-color: #222222;
 }
 
 .commitByLine {
     margin-left: 0px;
     margin-top: 0px;
     padding-inline-start: 35px;
-    font-size: 11pt;
+    font-size: 10pt;
+    color: #cccccc;
 }
 
 .review_button {
     margin-left: 35px;
-    margin-block-start: 5px;
+    margin-block-start: -2px;
     margin-block-end: 5px;
+    font-size: 10pt;
 }
 
 .review_skip {
@@ -119,43 +143,53 @@
     padding: 0px;
     font-size: 10pt;
     width: 850px;
+    color: #e8e6e3;
 }
 
 a {
     text-decoration: none;
+    color: #e8e6e3;
+}
+
+a:visited {
+    text-decoration: none;
+    color: #c8c6c3;
 }
 
 .linkRepo {
-    font-size: 13pt;
-    color: #111111;
+    font-size: 12pt;
+    color: #e8e6e3;
     font-weight: 500;
 }
 
 .linkRepo:visited {
-    font-size: 13pt;
-    color: #333333;
-
+    font-size: 12pt;
+    color: #e8e6e3;
 }
 
 .linkCommit {
-    font-size: 12pt;
-    color: #111177;
+    font-size: 10pt;
+    color: #c8c6c3;
+    width: 800px;
+    display: inline-block;
 }
 
 .linkCommit:visited {
     font-size: 12pt;
-    color: #333377;
+    color: #a8a6a3;;
 }
 
 
 .commitByLineDate {
     font-weight: 600;
     font-size: 10pt;
+    color: #AA0000;
 }
 
 .commitByLineUser {
     font-weight: 600;
     font-size: 10pt;
+    color: #AA0000;
 }
 
 .countdown {
@@ -164,6 +198,9 @@ a {
     margin-bottom: 0px;
     margin-top: 0px;
     width: 130px;
+    font-family: "Courier New", monospace;
+    color: rgb(232, 230, 227);
+    font-size: 12px;
 }
 
 .review_span {
