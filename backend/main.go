@@ -13,6 +13,7 @@ import (
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
+	"github.com/robfig/cron/v3"
 )
 
 type Repos struct {
@@ -79,13 +80,27 @@ func updateConfig(c echo.Context) error {
 func reviewedCommit(c echo.Context) error {
 	id := c.Param("id")
 	split := strings.Split(id, "_")
-	id_repo, _ := strconv.Atoi(split[0])
-	id_commit, _ := strconv.Atoi(split[1])
+	id_repo := 0
+	id_user := 0
+	id_commit := 0
 
-	parts := strings.Split(repos.Repos[id_repo].ReviewCommits[id_commit], "/")
-	repos.Repos[id_repo].LastSHA1 = parts[len(parts)-1]
-	slice := removeIndex(repos.Repos[id_repo].ReviewCommits, id_commit)
-	repos.Repos[id_repo].ReviewCommits = slice
+	if len(split) > 2 {
+		id_repo, _ = strconv.Atoi(split[0])
+		id_user, _ = strconv.Atoi(split[1])
+		id_commit, _ = strconv.Atoi(split[2])
+		parts := strings.Split(repos.Repos[id_repo].Users[id_user].ReviewCommits[id_commit], "/")
+		repos.Repos[id_repo].Users[id_user].LastSHA1 = parts[len(parts)-1]
+		slice := removeIndex(repos.Repos[id_repo].Users[id_user].ReviewCommits, id_commit)
+		repos.Repos[id_repo].Users[id_user].ReviewCommits = slice
+	} else {
+		id_repo, _ = strconv.Atoi(split[0])
+		id_commit, _ = strconv.Atoi(split[1])
+		parts := strings.Split(repos.Repos[id_repo].ReviewCommits[id_commit], "/")
+		repos.Repos[id_repo].LastSHA1 = parts[len(parts)-1]
+		slice := removeIndex(repos.Repos[id_repo].ReviewCommits, id_commit)
+		repos.Repos[id_repo].ReviewCommits = slice
+	}
+
 	save_json()
 	return c.JSON(http.StatusOK, repos)
 }
@@ -136,6 +151,10 @@ func main() {
 	fmt.Printf("\n")
 
 	update_repos()
+
+	c := cron.New(cron.WithSeconds())
+	c.AddFunc("0 */10 * * * *", func() { update_repos() })
+	c.Start()
 
 	e := echo.New()
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{

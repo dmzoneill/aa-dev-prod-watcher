@@ -1,6 +1,6 @@
 .config {
     height: 800px;
-    width: 1000px;
+    width: 950px;
     padding: 12px 20px;
     box-sizing: border-box;
     border: 2px solid #ccc;
@@ -38,13 +38,57 @@
     margin-block-end: 0px;
 }
 
+.repo_list li {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
 .commit_list {
     list-style-type: none;
     margin-left: 8px;
     margin-block-start: 5px;
     margin-block-end: 5px;
-    padding-inline-start: 15px;
+    padding-inline-start: 15px; 
+    padding-inline-end: 15px;   
+    padding-top: 0px;
+    padding-bottom: 0px;
     border-left: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+}
+
+.commit_list li {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.commit_list li:hover {
+    margin-top: 3px;
+    margin-bottom: 3px;
+    background-color: #efefef;
+}
+
+.user_commit_list {
+    list-style-type: none;
+    margin-left: 8px;
+    margin-block-start: 5px;
+    margin-block-end: 5px;
+    padding-inline-start: 15px; 
+    padding-inline-end: 15px;   
+    padding-top: 0px;
+    padding-bottom: 0px;
+    border-left: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+}
+
+.user_commit_list li {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.user_commit_list li:hover {
+    margin-top: 3px;
+    margin-bottom: 3px;
+    background-color: #efefef;
 }
 
 .commitByLine {
@@ -60,6 +104,15 @@
     margin-block-end: 5px;
 }
 
+.review_skip {
+    margin-block-start: 5px;
+    margin-block-end: 5px;
+    color: #666666;
+    width: 60px;
+    text-align: center;
+    margin-right: 32px;
+}
+
 .logo {
     margin-left: auto;
     margin-right: auto;
@@ -73,13 +126,13 @@ a {
 }
 
 .linkRepo {
-    font-size: 14pt;
+    font-size: 13pt;
     color: #111111;
     font-weight: 500;
 }
 
 .linkRepo:visited {
-    font-size: 14pt;
+    font-size: 13pt;
     color: #333333;
 
 }
@@ -103,4 +156,18 @@ a {
 .commitByLineUser {
     font-weight: 600;
     font-size: 10pt;
+}
+
+.countdown {
+    margin-left: auto; 
+    margin-right: 0;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    width: 130px;
+}
+
+.review_span {
+    margin-top: -15px;
+    margin-right: 0px;
+    float: right;
 }
