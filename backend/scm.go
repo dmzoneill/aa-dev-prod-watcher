@@ -32,8 +32,8 @@ func execute(app string, dir string, args []string) string {
 	err := cmd.Run()
 
 	if err != nil {
-		fmt.Println(app + " " + strings.Join(args, " "))
-		fmt.Println(fmt.Sprint(err) + ": " + stderr.String())
+		stream_print(app + " " + strings.Join(args, " "))
+		stream_print(fmt.Sprint(err) + ": " + stderr.String())
 		os.Exit(1)
 	}
 
@@ -42,14 +42,14 @@ func execute(app string, dir string, args []string) string {
 
 func clone(name string, url string) {
 	if _, err := os.Stat("repos/" + name); os.IsNotExist(err) {
-		fmt.Println(execute("/usr/bin/git", name, []string{"clone", url, "repos/" + name}))
+		stream_print(execute("/usr/bin/git", name, []string{"clone", url, "repos/" + name}))
 	}
 }
 
 func pull(name string) {
 	res := strings.Trim(execute("/usr/bin/git", name, []string{"pull", "--rebase"}), "\n")
 	if res != "Already up to date." {
-		fmt.Println(res)
+		stream_print(res)
 	}
 }
 
@@ -91,25 +91,25 @@ func removeDuplicateStr(strSlice []string) []string {
 func print_commits(index int, name string, url string, sha1 string, provider string) {
 	commits := strings.Split(execute("/usr/bin/git", name, []string{"rev-list", sha1 + "..HEAD"}), "\n")
 	if len(commits) > 0 {
-		fmt.Printf("\n")
+		stream_print("")
 	}
 	for i := 0; i < len(commits)-1; i++ {
 		if isCommitInCommits(string(commits[i]), repos.Repos[index].ReviewCommits) {
-			fmt.Printf("     .. dupe\n")
+			stream_print("     .. dupe")
 			continue
 		}
 		if provider == "github" {
 			review := getCommitTitle(name, string(commits[i])) + ",#," + fmt.Sprintf("%s/commit/%s", url, string(commits[i]))
 			repos.Repos[index].ReviewCommits = append(repos.Repos[index].ReviewCommits, review)
-			fmt.Printf("     >> %s/commit/%s\n", url, commits[i])
+			stream_print(fmt.Sprintf("     >> %s/commit/%s", url, commits[i]))
 		} else {
 			review := getCommitTitle(name, string(commits[i])) + ",#," + fmt.Sprintf("%s/-/commit/%s", url, string(commits[i]))
 			repos.Repos[index].ReviewCommits = append(repos.Repos[index].ReviewCommits, review)
-			fmt.Printf("     >> %s/-/commit/%s\n", url, commits[i])
+			stream_print(fmt.Sprintf("     >> %s/-/commit/%s", url, commits[i]))
 		}
 	}
 	if len(commits) > 0 {
-		fmt.Printf("\n")
+		stream_print("")
 	}
 	repos.Repos[index].ReviewCommits = removeDuplicateStr(repos.Repos[index].ReviewCommits)
 }
@@ -117,36 +117,36 @@ func print_commits(index int, name string, url string, sha1 string, provider str
 func print_commits_user(index int, user_index int, name string, url string, user string, sha1 string, provider string) {
 	commits := strings.Split(execute("/usr/bin/git", name, []string{"log", "-i", "--author", user, "-n", "100", "--pretty=format:\"%H\"", sha1 + "..HEAD"}), "\n")
 	if len(commits) > 0 {
-		fmt.Printf("\n")
+		stream_print("")
 	}
 	for i := 0; i < len(commits)-1; i++ {
 		if isCommitInCommits(string(commits[i])[1:41], repos.Repos[index].ReviewCommits) {
-			fmt.Printf("     .. dupe\n")
+			stream_print("     .. dupe")
 			continue
 		}
 		if provider == "github" {
 			review := getCommitTitle(name, string(commits[i])[1:41]) + ",#," + fmt.Sprintf("%s/commit/%s", url, string(commits[i])[1:41])
 			repos.Repos[index].Users[user_index].ReviewCommits = append(repos.Repos[index].Users[user_index].ReviewCommits, review)
-			fmt.Printf("     >> %s/commit/%s\n", url, string(commits[i])[1:41])
+			stream_print(fmt.Sprintf("     >> %s/commit/%s", url, string(commits[i])[1:41]))
 		} else {
 			review := getCommitTitle(name, string(commits[i])[1:41]) + ",#," + fmt.Sprintf("%s/-/commit/%s", url, string(commits[i])[1:41])
 			repos.Repos[index].Users[user_index].ReviewCommits = append(repos.Repos[index].Users[user_index].ReviewCommits, review)
-			fmt.Printf("     >> %s/-/commit/%s\n", url, string(commits[i])[1:41])
+			stream_print(fmt.Sprintf("     >> %s/-/commit/%s", url, string(commits[i])[1:41]))
 		}
 	}
 	if len(commits) > 0 {
-		fmt.Printf("\n")
+		stream_print("")
 	}
 	repos.Repos[index].Users[user_index].ReviewCommits = removeDuplicateStr(repos.Repos[index].Users[user_index].ReviewCommits)
 }
 
 func update_repos() {
 
-	fmt.Printf("\n")
-	fmt.Printf(" " + strings.Repeat("=", 80) + "\n")
-	fmt.Printf(" Updating.... \n")
-	fmt.Printf(" " + strings.Repeat("=", 80) + "\n")
-	fmt.Printf("\n")
+	stream_print("")
+	stream_print(" " + strings.Repeat("=", 80))
+	stream_print(" Updating.... ")
+	stream_print(" " + strings.Repeat("=", 80))
+	stream_print("")
 
 	for i := 0; i < len(repos.Repos); i++ {
 		parts := strings.Split(repos.Repos[i].Url, "/")
@@ -160,7 +160,7 @@ func update_repos() {
 			if repos.Repos[i].LastSHA1 == "" {
 				repos.Repos[i].LastSHA1 = last_commit
 			}
-			fmt.Printf(" %2s) %-7s %-7s %-9s %-41s %s \n", strconv.Itoa(i), repos.Repos[i].Provider, repos.Repos[i].Branch, "", repos.Repos[i].LastSHA1, repos.Repos[i].Url)
+			stream_print(fmt.Sprintf(" %2s) %-7s %-7s %-9s %-41s %s", strconv.Itoa(i), repos.Repos[i].Provider, repos.Repos[i].Branch, "", repos.Repos[i].LastSHA1, repos.Repos[i].Url))
 			if last_commit != repos.Repos[i].LastSHA1 {
 				print_commits(i, name, repos.Repos[i].Url, repos.Repos[i].LastSHA1, repos.Repos[i].Provider)
 			}
@@ -171,7 +171,7 @@ func update_repos() {
 			if repos.Repos[i].Users[t].LastSHA1 == "" {
 				repos.Repos[i].Users[t].LastSHA1 = getLastSHA1User(name, repos.Repos[i].Users[t].Username)
 			}
-			fmt.Printf(" %2s) %-7s %-7s %-9s %-41s %s \n", strconv.Itoa(i), repos.Repos[i].Provider, repos.Repos[i].Branch, repos.Repos[i].Users[t].Username, repos.Repos[i].Users[t].LastSHA1, repos.Repos[i].Url)
+			stream_print(fmt.Sprintf(" %2s) %-7s %-7s %-9s %-41s %s", strconv.Itoa(i), repos.Repos[i].Provider, repos.Repos[i].Branch, repos.Repos[i].Users[t].Username, repos.Repos[i].Users[t].LastSHA1, repos.Repos[i].Url))
 			if last_commit != repos.Repos[i].Users[t].LastSHA1 {
 				print_commits_user(i, t, name, repos.Repos[i].Url, repos.Repos[i].Users[t].Username, repos.Repos[i].Users[t].LastSHA1, repos.Repos[i].Provider)
 			}
@@ -183,5 +183,5 @@ func update_repos() {
 			}
 		}
 	}
-	save_json()
+	save_yaml()
 }

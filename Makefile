@@ -1,11 +1,5 @@
 
-.PHONY: build backend frontend babel tsc
-
-tsc:
-	cd frontend; npm run check-types -- --watch
-
-babel:
-	cd frontend; npx babel --watch js_in/ --out-dir js_out/ --presets react-app/prod --extensions ".ts"
+.PHONY: build backend frontend docker-build
 
 backend:
 	cd backend; go run . 
@@ -15,4 +9,12 @@ frontend:
 
 build:
 	cd backend; go build
-	
+
+docker-build:
+	docker build -f build/Dockerfile -t scm .
+
+docker-run:
+	- docker rm -f scm
+	- docker network create scm
+	docker run -d --name scm --network scm -p 8080:8080 -p 1323:1323 scm
+
