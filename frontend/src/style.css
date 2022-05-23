@@ -3,8 +3,8 @@ body {
     font-family: "Courier New", monospace !important
 }
 
-.configState {
-    width: 950px;
+.configState, .serverLog, .config {
+    width: 1550px;
     padding: 12px 20px;
     box-sizing: border-box;
     border: 1px solid rgb(55, 60, 62);
@@ -13,29 +13,53 @@ body {
     resize: none;
     font-family: "Courier New", monospace;
     color: rgb(232, 230, 227);
-    padding: 20px;
-    font-size: 16px;
+    font-size: 12pt;
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+.editorWrapper {
+    padding: 6px 20px;
+    box-sizing: border-box;
+    border: 1px solid rgb(55, 60, 62);
+    border-radius: 4px;
+    background-color: rgb(36, 39, 41);
+    width: 100%;
 }
 
 .config {
-    width: 950px;
     height: 1200px;
-    padding: 12px 20px;
-    box-sizing: border-box;
-    border: 1px solid rgb(55, 60, 62);
-    border-radius: 4px;
-    background-color: rgb(36, 39, 41);
-    resize: none;
-    font-family: "Courier New", monospace;
-    color: rgb(232, 230, 227);
-    padding: 20px;
-    font-size: 16px;
+    font-size: 12pt;
+}
+
+h3, h4, h5 {
+    color: white;
+}
+
+.serverLog {
+    font-size: 10pt;
+}
+
+.serverLog p {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.save_button, .refresh_button {
+    margin-left: auto;
+    margin-right: 2px;
+    float: right;
+    margin-top: -5px;
+    margin-bottom: 15px;
 }
 
 .main_wrapper {
     margin-left: auto;
     margin-right: auto;
-    width: 1000px;
+    width: 1600px;
 }
 
 .git_image {
@@ -54,10 +78,14 @@ body {
 
 .repo_list {
     list-style-type: none;
-    margin-left: 0px;
     padding-inline-start: 0px;
     margin-block-start: 0px;
     margin-block-end: 0px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 1px solid rgb(55, 60, 62);
+    border-radius: 4px;
+    background-color: rgb(36, 39, 41);
 }
 
 .repo_list li {
@@ -134,7 +162,7 @@ body {
     color: #666666;
     width: 60px;
     text-align: center;
-    margin-right: 32px;
+    margin-right: 40px;
 }
 
 .logo {
@@ -183,24 +211,13 @@ a:visited {
 .commitByLineDate {
     font-weight: 600;
     font-size: 10pt;
-    color: #AA0000;
+    color: #dd4b34;
 }
 
 .commitByLineUser {
     font-weight: 600;
     font-size: 10pt;
-    color: #AA0000;
-}
-
-.countdown {
-    margin-left: auto; 
-    margin-right: 0;
-    margin-bottom: 0px;
-    margin-top: 0px;
-    width: 130px;
-    font-family: "Courier New", monospace;
-    color: rgb(232, 230, 227);
-    font-size: 12px;
+    color: #dd4b34;
 }
 
 .review_span {
