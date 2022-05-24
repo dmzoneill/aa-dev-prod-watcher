@@ -294,7 +294,6 @@ function Config() {
             body: data
         });
         
-        await yaml_fetcher.text();
         const text = await yaml_fetcher.text();
         const repos_yaml_struct = yaml.load(text);
         setPrettyResult(text);
