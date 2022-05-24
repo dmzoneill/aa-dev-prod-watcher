@@ -26,30 +26,15 @@ repos:
     - provider: github
       url: https://github.com/RedHatInsights/tower-analytics-frontend
       branch: devel
-      lastSHA1: 9a78ec091bad67fd9998e2c3afec4b83749801c6
+      lastSHA1: 50a560e7f02618353b6bef85d574a892e9b9a09f
       users: []
-      reviewcommits:
-        - '2022-05-23 || Merge pull request #778 from RedHatInsights/AA952_use_ids_for_visibility  (HEAD -> devel, origin/devel, origin/HEAD) || ZitaNemeckova,#,https://github.com/RedHatInsights/tower-analytics-frontend/commit/b0fe9d4e26f26de552dafe5bb4b5fc9f751b9397'
-        - 2022-05-19 || Merge branch 'devel' into AA952_use_ids_for_visibility  (origin/AA952_use_ids_for_visibility) || ZitaNemeckova,#,https://github.com/RedHatInsights/tower-analytics-frontend/commit/1578c634a53b6e99594e62a29eb52053fb452f64
-        - 2022-05-06 || Merge branch 'devel' into AA952_use_ids_for_visibility  || ZitaNemeckova,#,https://github.com/RedHatInsights/tower-analytics-frontend/commit/627c6431b70ee6d8bb64370cd74bcc35074a698e
-        - 2022-04-28 || Merge branch 'devel' into AA952_use_ids_for_visibility  || ZitaNemeckova,#,https://github.com/RedHatInsights/tower-analytics-frontend/commit/b129a6e90987941b86c0621a615564339bc1cefe
-        - 2022-04-28 || Merge branch 'devel' into AA952_use_ids_for_visibility  || ZitaNemeckova,#,https://github.com/RedHatInsights/tower-analytics-frontend/commit/8ac69b28d5273fb5642c8bdcba09903650cac4f5
-        - 2022-04-27 || Merge branch 'devel' into AA952_use_ids_for_visibility  || ZitaNemeckova,#,https://github.com/RedHatInsights/tower-analytics-frontend/commit/7642f41aae4959ce18abab5dab1f3562a7c1d394
-        - 2022-04-26 || Add missing id to the test  || Zita Nemeckova,#,https://github.com/RedHatInsights/tower-analytics-frontend/commit/445c49aafcacb3928cbc08f5d5c7e6aeee5f69ac
-        - 2022-04-26 || Use concreate type instead of unknown  || Zita Nemeckova,#,https://github.com/RedHatInsights/tower-analytics-frontend/commit/4031459eceb36f12f7bc18b53790bc67a5903d2f
-        - 2022-04-06 || In standard reports use ids for visibility instead of index  || Zita Nemeckova,#,https://github.com/RedHatInsights/tower-analytics-frontend/commit/de14935f7e5a09c519405a26e94e7323a55f2fc6
-        - '2022-05-23 || Merge pull request #800 from RedHatInsights/AA-1146_expiry_date_related_fixes  (HEAD -> devel, origin/devel, origin/HEAD) || Harpreet Kataria,#,https://github.com/RedHatInsights/tower-analytics-frontend/commit/50a560e7f02618353b6bef85d574a892e9b9a09f'
-        - 2022-05-23 || Disable past dates on Expiry date selection  (origin/AA-1146_expiry_date_related_fixes) || Harpreet Kataria,#,https://github.com/RedHatInsights/tower-analytics-frontend/commit/e6791aa0ef14a3759d2ebfd5ac80aa07690e3192
+      reviewcommits: []
     - provider: github
       url: https://github.com/bsquizz/ocviapy
       branch: master
-      lastSHA1: ba4f03071a4e0fcf1a1e85ea7f866f793f2bc732
+      lastSHA1: 3e14cc3d9ed0dd562cc45cb75ffb6f0e5cd5f850
       users: []
-      reviewcommits:
-        - '2022-05-19 || Merge pull request #2 from bsquizz/imports_from_bonfire  (HEAD -> main, tag: v1.0.0, origin/main, origin/HEAD) || Brandon Squizzato,#,https://github.com/bsquizz/ocviapy/commit/d3e977aeb202a04e0ec29262ad978375f50a40ca'
-        - 2022-05-13 || Rework how status details string is printed  (origin/imports_from_bonfire) || Brandon Squizzato,#,https://github.com/bsquizz/ocviapy/commit/cb70d0e31a0aa3caae2d68b297a5540ee1caeef4
-        - 2022-05-13 || Transfer new logic written in bonfire to this pkg  || Brandon Squizzato,#,https://github.com/bsquizz/ocviapy/commit/20f093d30e694411e6c9c5cf2812dfbc00849c2d
-        - '2022-05-23 || Support ''label'' kwarg for get_all_namespaces  (HEAD -> main, tag: v1.0.1, origin/main, origin/HEAD) || Brandon Squizzato,#,https://github.com/bsquizz/ocviapy/commit/3e14cc3d9ed0dd562cc45cb75ffb6f0e5cd5f850'
+      reviewcommits: []
     - provider: github
       url: https://github.com/RedHatInsights/landing-page-frontend
       branch: master
@@ -83,13 +68,9 @@ repos:
     - provider: github
       url: https://github.com/RedHatInsights/ephemeral-namespace-operator
       branch: master
-      lastSHA1: f6fdf8b3f75e1101ea915428db9975289f10acd6
+      lastSHA1: 2885c502a1e38fd7ea51f9b7252783546271d343
       users: []
-      reviewcommits:
-        - '2022-05-19 || Merge pull request #67 from RedHatInsights/psav/upgrade_build_tools  (HEAD -> main, origin/main, origin/HEAD) || Pete Savage,#,https://github.com/RedHatInsights/ephemeral-namespace-operator/commit/2885c502a1e38fd7ea51f9b7252783546271d343'
-        - 2022-05-19 || Upgrade all build tools  (origin/psav/upgrade_build_tools) || Pete Savage,#,https://github.com/RedHatInsights/ephemeral-namespace-operator/commit/3649a58b2c49398bcfc203819f7a4adf525cdb0d
-        - '2022-05-19 || Merge pull request #66 from RedHatInsights/RHCLOUD-19347-eno-update-golang-and-libs  || Pete Savage,#,https://github.com/RedHatInsights/ephemeral-namespace-operator/commit/254656afe529a908483cc9b55878f7c553d5e927'
-        - 2022-05-19 || Changed name of step.  (origin/RHCLOUD-19347-eno-update-golang-and-libs) || Matt Knop,#,https://github.com/RedHatInsights/ephemeral-namespace-operator/commit/295ab5d425e18ddc16fe53b04d00cbfd1a906228
+      reviewcommits: []
     - provider: github
       url: https://github.com/RedHatInsights/insights-pipeline-lib
       branch: master
@@ -111,21 +92,15 @@ repos:
     - provider: gitlab
       url: https://gitlab.cee.redhat.com/automation-analytics/automation-analytics-backend
       branch: main
-      lastSHA1: d6c578134782403a3f1f03c234105cf6050ac9fb
+      lastSHA1: cd842a83bc2a32f22fee6819816a8113859bd153
       users: []
-      reviewcommits:
-        - 2022-05-23 || Merge branch 'saasv2-fix' into 'main'  (HEAD -> main, origin/main, origin/HEAD) || James Wong,#,https://gitlab.cee.redhat.com/automation-analytics/automation-analytics-backend/-/commit/cd842a83bc2a32f22fee6819816a8113859bd153
-        - 2022-05-23 || Change in graphql for saasFilesV2 -> saasFiles  || David O Neill,#,https://gitlab.cee.redhat.com/automation-analytics/automation-analytics-backend/-/commit/eecada74ce00af0ade7ca085ceb7eecca57eff31
+      reviewcommits: []
     - provider: gitlab
       url: https://gitlab.cee.redhat.com/automation-analytics/pdf-generator
       branch: main
-      lastSHA1: c62c1bb1afea224843ef28ebb7a8964eb501861f
+      lastSHA1: 05e03a685de92bc187e34121085f23b859153bb4
       users: []
-      reviewcommits:
-        - 2022-05-23 || Merge branch 'visibility_by_id' into 'main'  (HEAD -> main, origin/main, origin/HEAD) || Zita Nemeckova,#,https://gitlab.cee.redhat.com/automation-analytics/pdf-generator/-/commit/05e03a685de92bc187e34121085f23b859153bb4
-        - 2022-05-23 || Merge branch 'AA1104_hidden_save_value_is_grey' into 'main'  || Zita Nemeckova,#,https://gitlab.cee.redhat.com/automation-analytics/pdf-generator/-/commit/2fbc208cece4fbc338b204599f8935524ec3e35a
-        - 2022-05-13 || When row is hidden the saving is gray  || Zita Nemeckova,#,https://gitlab.cee.redhat.com/automation-analytics/pdf-generator/-/commit/bddf882382070f0c480776c825beed22d606f186
-        - 2022-04-20 || Visibility is determined by id not by index  || Zita Nemeckova,#,https://gitlab.cee.redhat.com/automation-analytics/pdf-generator/-/commit/cb85a9a2370f927f61a72814de00ea0e1ae0505f
+      reviewcommits: []
     - provider: gitlab
       url: https://gitlab.cee.redhat.com/service/app-interface
       branch: master
@@ -147,20 +122,15 @@ repos:
     - provider: gitlab
       url: https://gitlab.cee.redhat.com/insights-qe/iqe-core
       branch: master
-      lastSHA1: 358194cc5c252500d3c474f712acd7babd98a843
+      lastSHA1: f0c7aed2f45873725db45f704ffabc37323c69a5
       users: []
-      reviewcommits:
-        - 2022-05-23 || Merge branch 'handle-podman' into 'master'  (HEAD -> master, origin/master, origin/HEAD) || Dmitry Misharov,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/f0c7aed2f45873725db45f704ffabc37323c69a5
-        - 2022-05-23 || Merge branch 'iqe-automation/update-global-pins' into 'master'  || Dmitry Misharov,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/fe317b6d17019508fd113ad160ad585580815a96
-        - 2022-05-21 || Update global pins  (origin/iqe-automation/update-global-pins) || IQE Bot,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/dba61ce449e6d27eff99f5e6a50c9283444d0507
-        - 2022-05-11 || Refactor iqe.sh to better handle podman  (origin/handle-podman) || Victor M,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/6bd4141dd45b69726aace11e288b7ea9ab9d2997
+      reviewcommits: []
     - provider: gitlab
       url: https://gitlab.cee.redhat.com/insights-qe/iqe-platform-ui-plugin
       branch: master
-      lastSHA1: 8637d677364e5d4493a6047f41a1d9a1d29cd2ac
+      lastSHA1: 4dd0b0607ad40e39c9154821386add4ac917b7f4
       users: []
-      reviewcommits:
-        - '2022-05-24 || Fix up tests  (HEAD -> master, tag: v2022.05.24.0, origin/zabikeno/fix-up-tests, origin/master, origin/HEAD) || Zhamilya Abikenova,#,https://gitlab.cee.redhat.com/insights-qe/iqe-platform-ui-plugin/-/commit/4dd0b0607ad40e39c9154821386add4ac917b7f4'
+      reviewcommits: []
     - provider: github
       url: https://github.com/RedHatInsights/insights-dashboard.git
       branch: master
