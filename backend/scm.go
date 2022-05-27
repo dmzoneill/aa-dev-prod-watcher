@@ -11,6 +11,8 @@ import (
 	"time"
 )
 
+var update_running bool = false
+
 func execute(app string, dir string, args []string) string {
 	path, path_err := os.Getwd()
 	if path_err != nil {
@@ -182,6 +184,11 @@ func print_commits_user(index int, user_index int, name string, url string, user
 }
 
 func update_repos() {
+	if update_running {
+		return
+	}
+
+	update_running = true
 
 	stream_print("")
 	stream_print(" " + strings.Repeat("=", 80))
@@ -231,4 +238,5 @@ func update_repos() {
 		}
 	}
 	save_yaml()
+	update_running = false
 }

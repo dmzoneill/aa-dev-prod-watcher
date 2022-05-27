@@ -2,7 +2,7 @@ repos:
     - provider: github
       url: https://github.com/RedHatInsights/bonfire
       branch: master
-      lastSHA1: 2d771a3ca52dab8b95a54350ff452d582323be49
+      lastSHA1: 6a4d2d0867c3c0acfe4b01a4d3a743bc601f85c3
       users: []
       reviewcommits: []
     - provider: github
@@ -26,7 +26,7 @@ repos:
     - provider: github
       url: https://github.com/RedHatInsights/tower-analytics-frontend
       branch: devel
-      lastSHA1: 50a560e7f02618353b6bef85d574a892e9b9a09f
+      lastSHA1: 67a95da949e6d8b25267453dd9dcbc5805c4756f
       users: []
       reviewcommits: []
     - provider: github
@@ -52,7 +52,11 @@ repos:
       branch: master
       lastSHA1: c3134f202e4a6c04ed53b492dd21d74614aa4291
       users: []
-      reviewcommits: []
+      reviewcommits:
+        - '2022-05-25 || Merge pull request #709 from dehort/adjust_batch_size_for_org_id_populator  (HEAD -> master, origin/master, origin/HEAD) || Keith Walsh,#,https://github.com/RedHatInsights/insights-rbac/commit/e69cda82fe03e19e94118cf8e47dae6e15d6888f'
+        - 2022-05-25 || Adjust the batch size used by the org-id-populator util  || Derek Horton,#,https://github.com/RedHatInsights/insights-rbac/commit/a5431ae0b75dab7022fef70393882a3c59daf0f9
+        - '2022-05-24 || Merge pull request #708 from dehort/add_translator_host_as_parameter  || Keith Walsh,#,https://github.com/RedHatInsights/insights-rbac/commit/6cd989d9949d7e23194a8f42dcc4b3d9725a4e41'
+        - 2022-05-24 || Add translator host and port as parameters  || Derek Horton,#,https://github.com/RedHatInsights/insights-rbac/commit/03813f89cb7f1d22859cfbeadd3b31a341ab4224
     - provider: github
       url: https://github.com/RedHatInsights/platform-go-middlewares
       branch: master
@@ -76,7 +80,9 @@ repos:
       branch: master
       lastSHA1: e91e27d03648888ae56ad885e1857cc061964cd8
       users: []
-      reviewcommits: []
+      reviewcommits:
+        - '2022-05-25 || Merge pull request #180 from quarckster/jenkins-agent-quay  (HEAD -> master, tag: v5.7.4, origin/master, origin/HEAD) || Dmitrii Misharov,#,https://github.com/RedHatInsights/insights-pipeline-lib/commit/680f1956ef37cde1bc5f2c9b51b29c2e797aa58c'
+        - 2022-05-25 || Jenkins agent image was migrated to quay.io  || Dmitry Misharov,#,https://github.com/RedHatInsights/insights-pipeline-lib/commit/bef0ccb01e27aef0317eb30e57f68d0e818dcb16
     - provider: gitlab
       url: https://gitlab.cee.redhat.com/consoledot/consoledot.pages.redhat.com
       branch: master
@@ -92,15 +98,26 @@ repos:
     - provider: gitlab
       url: https://gitlab.cee.redhat.com/automation-analytics/automation-analytics-backend
       branch: main
-      lastSHA1: cd842a83bc2a32f22fee6819816a8113859bd153
+      lastSHA1: fea3ef4982e1c8c8fa5b31d930cd30dd2fe7a382
       users: []
       reviewcommits: []
     - provider: gitlab
       url: https://gitlab.cee.redhat.com/automation-analytics/pdf-generator
       branch: main
-      lastSHA1: 05e03a685de92bc187e34121085f23b859153bb4
+      lastSHA1: a463e2e4595ce26bd331dbc742bf9b02dae5096e
       users: []
-      reviewcommits: []
+      reviewcommits:
+        - 2022-05-25 || Merge branch 'supervisord' into 'main'  (HEAD -> main, origin/main, origin/HEAD) || Aparna Karve,#,https://gitlab.cee.redhat.com/automation-analytics/pdf-generator/-/commit/8d08f54e8d159ae087a6b87ecfef2503f2ac40e9
+        - 2022-05-25 || Merge branch 'puppeteer14_1_0' into 'main'  || Aparna Karve,#,https://gitlab.cee.redhat.com/automation-analytics/pdf-generator/-/commit/e5e9a5bd5c914f61830085f75aabac9ec0e2dcf1
+        - 2022-05-24 || upgrade pupeteer to 14.1.1  (origin/puppeteer14_1_0) || Aparna Karve,#,https://gitlab.cee.redhat.com/automation-analytics/pdf-generator/-/commit/b4606908d6422357a9fa25b57e615df7bffb461e
+        - 2022-05-23 || Merge branch 'visibility_by_id' into 'main'  || Zita Nemeckova,#,https://gitlab.cee.redhat.com/automation-analytics/pdf-generator/-/commit/05e03a685de92bc187e34121085f23b859153bb4
+        - 2022-05-23 || Merge branch 'AA1104_hidden_save_value_is_grey' into 'main'  || Zita Nemeckova,#,https://gitlab.cee.redhat.com/automation-analytics/pdf-generator/-/commit/2fbc208cece4fbc338b204599f8935524ec3e35a
+        - 2022-05-13 || When row is hidden the saving is gray  || Zita Nemeckova,#,https://gitlab.cee.redhat.com/automation-analytics/pdf-generator/-/commit/bddf882382070f0c480776c825beed22d606f186
+        - 2022-05-12 || Merge branch 'manage_422' into 'main'  || Aparna Karve,#,https://gitlab.cee.redhat.com/automation-analytics/pdf-generator/-/commit/c62c1bb1afea224843ef28ebb7a8964eb501861f
+        - 2022-05-10 || Merge branch 'grafana-dashboards' into 'main'  || David O Neill,#,https://gitlab.cee.redhat.com/automation-analytics/pdf-generator/-/commit/cd5da5c6dffcd69a282711a40a91cc23654eba56
+        - 2022-05-10 || Grafana dashboards  || David O Neill,#,https://gitlab.cee.redhat.com/automation-analytics/pdf-generator/-/commit/3897c01b2fa118974dd3a755bca1d3257679317b
+        - 2022-05-05 || Fixes pod crashes due to missing input parameters +  || Aparna Karve,#,https://gitlab.cee.redhat.com/automation-analytics/pdf-generator/-/commit/13a6c2d8162699914cb46ec748fc46f134618091
+        - 2022-04-20 || Visibility is determined by id not by index  || Zita Nemeckova,#,https://gitlab.cee.redhat.com/automation-analytics/pdf-generator/-/commit/cb85a9a2370f927f61a72814de00ea0e1ae0505f
     - provider: gitlab
       url: https://gitlab.cee.redhat.com/service/app-interface
       branch: master
@@ -124,13 +141,18 @@ repos:
       branch: master
       lastSHA1: f0c7aed2f45873725db45f704ffabc37323c69a5
       users: []
-      reviewcommits: []
+      reviewcommits:
+        - 2022-05-26 || Merge branch 'env_parser_updates' into 'master'  (HEAD -> master, origin/master, origin/HEAD) || Dmitry Misharov,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/01eeff2e12c6756b99c916759a2843dfd0e54af4
+        - 2022-05-26 || Load environment info via secrets, add support for sso/frontend  || bsquizza,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/f52446a824b86879d4685a10a2cbb30f7f47ed3d
+        - '2022-05-27 || Merge branch ''widgetastic-browser'' into ''master''  (HEAD -> master, tag: v22.05.27.0, origin/master, origin/HEAD) || Dmitry Misharov,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/713eb6f3b2c9a4aba6d8241256c4f487da04096b'
+        - '2022-05-26 || IQE-1193: Handle a dead web_driver session, allow to recreate it  || Dmitry Misharov,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/55dd4cba3fd9eb788a25d851b9904384cd36e321'
     - provider: gitlab
       url: https://gitlab.cee.redhat.com/insights-qe/iqe-platform-ui-plugin
       branch: master
       lastSHA1: 4dd0b0607ad40e39c9154821386add4ac917b7f4
       users: []
-      reviewcommits: []
+      reviewcommits:
+        - 2022-05-26 || Fixed context management in fixtures  (HEAD -> master, origin/master, origin/fixtures, origin/HEAD) || Dmitry Misharov,#,https://gitlab.cee.redhat.com/insights-qe/iqe-platform-ui-plugin/-/commit/003fef45b6695631961af4145f984ab812e21563
     - provider: github
       url: https://github.com/RedHatInsights/insights-dashboard.git
       branch: master
