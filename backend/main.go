@@ -37,6 +37,7 @@ type Repo struct {
 
 var repos Repos
 var streamBuffer []string
+var update_queued bool
 
 func getConfig(c echo.Context) error {
 	data, _ := yaml.Marshal(repos)
@@ -93,6 +94,7 @@ func setSSHKeys(c echo.Context) error {
 	f.Write(new_config)
 	f.Close()
 	os.Chmod(key_path, 0600)
+	update_queued = true
 
 	return c.String(http.StatusOK, string(new_config))
 }
@@ -128,7 +130,8 @@ func setGitConfig(c echo.Context) error {
 	new_config := []byte(c.FormValue("git_config"))
 	f.Write(new_config)
 	f.Close()
-
+	update_queued = true
+	save_yaml()
 	return c.String(http.StatusOK, string(new_config))
 }
 
@@ -175,7 +178,9 @@ func updateConfig(c echo.Context) error {
 		panic(err)
 	}
 	yaml.Unmarshal([]byte(c.FormValue("yaml_config")), &repos)
+	update_queued = true
 	data, _ := yaml.Marshal(repos)
+	save_yaml()
 	return c.String(http.StatusOK, string(data))
 }
 
@@ -186,8 +191,9 @@ func addRepoConfig(c echo.Context) error {
 	new_repo.Provider = c.FormValue("provider")
 	new_repo.Url = c.FormValue("url")
 	repos.Repos = append(repos.Repos, new_repo)
-	update_repos()
+	update_queued = true
 	data, _ := yaml.Marshal(repos)
+	save_yaml()
 	return c.String(http.StatusOK, string(data))
 }
 
@@ -200,7 +206,9 @@ func editRepoConfig(c echo.Context) error {
 			break
 		}
 	}
+	update_queued = true
 	data, _ := yaml.Marshal(repos)
+	save_yaml()
 	return c.String(http.StatusOK, string(data))
 }
 
@@ -215,7 +223,9 @@ func deleteRepoConfig(c echo.Context) error {
 	parts := strings.Split(c.FormValue("url"), "/")
 	name := parts[len(parts)-1]
 	os.RemoveAll("repos/" + name)
+	update_queued = true
 	data, _ := yaml.Marshal(repos)
+	save_yaml()
 	return c.String(http.StatusOK, string(data))
 }
 
@@ -249,8 +259,9 @@ func reviewedCommit(c echo.Context) error {
 		repos.Repos[id_repo].ReviewCommits = slice
 	}
 
-	save_yaml()
+	update_queued = true
 	temp_copy_string, _ := yaml.Marshal(repos)
+	save_yaml()
 	return c.String(http.StatusOK, string(temp_copy_string))
 }
 
@@ -285,6 +296,14 @@ func stream_print(line string) {
 	fmt.Println(line)
 }
 
+func pending_update() {
+	if update_queued {
+		update_queued = false
+		update_repos()
+		return
+	}
+}
+
 func main() {
 
 	yamlFile, err := os.Open("watch.yaml")
@@ -299,6 +318,7 @@ func main() {
 
 	c := cron.New(cron.WithSeconds())
 	c.AddFunc("0 */5 * * * *", func() { update_repos() })
+	c.AddFunc("*/1 * * * * *", func() { pending_update() })
 	c.Start()
 
 	e := echo.New()
