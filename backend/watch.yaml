@@ -8,20 +8,11 @@ repos:
     - provider: github
       url: https://github.com/RedHatInsights/clowder
       branch: master
-      lastSHA1: b939a8aa47d5f89ab6ef98c2e617675c50b2610a
+      lastSHA1: 42ec2bf74b8fd95561bd4c20132937e42268bf45
       users: []
       reviewcommits:
-        - 2022-05-31 || Updated dashbaord to add crcd  (HEAD -> master, origin/master, origin/HEAD) || Pete Savage,#,https://github.com/RedHatInsights/clowder/commit/cb65350cbf44652fb6cc07d5e2607c38e5783987
-        - 2022-05-31 || Rejigged annotations  || Pete Savage,#,https://github.com/RedHatInsights/clowder/commit/0c016c982bc508aa855ad08f84292d07201ceda5
-        - 2022-05-31 || Added unit tests  || Pete Savage,#,https://github.com/RedHatInsights/clowder/commit/ba77b49ddcb9a45713fa421cdd587bee89081d9c
-        - 2022-05-27 || Update annotations on podTemplateSpec, use same util func everywhere  || Brandon Squizzato,#,https://github.com/RedHatInsights/clowder/commit/26125ee3161de9e100b0bcff6a2dbc6847b742b5
-        - 2022-05-27 || Add UpdateAnnotations util func  || Brandon Squizzato,#,https://github.com/RedHatInsights/clowder/commit/59f3b59779c9d869cb6533562da393318ce2244b
-        - 2022-05-26 || Add kubelinter ignore annotations on CronJob/Job resources  || Brandon Squizzato,#,https://github.com/RedHatInsights/clowder/commit/0267004b733864ba8699589aa31e25b7918afe5e
-        - 2022-05-31 || Updated Makefile for easy testing  || Pete Savage,#,https://github.com/RedHatInsights/clowder/commit/7a0d593cf34182ba2a414277c1fb44c06df16b53
-        - 2022-06-01 || Fix issue with hash annotations  (HEAD -> master, origin/master, origin/HEAD) || Pete Savage,#,https://github.com/RedHatInsights/clowder/commit/6018ce2f3b8bdb3e4ff87b5bd41c8ea469cb1bbb
-        - '2022-06-02 || Merge pull request #624 from RedHatInsights/ignore_all  (HEAD -> master, origin/master, origin/HEAD) || Brandon Squizzato,#,https://github.com/RedHatInsights/clowder/commit/42ec2bf74b8fd95561bd4c20132937e42268bf45'
-        - 2022-06-01 || Use 'ignore all' kubelint annotation on Job pods  (origin/ignore_all) || Brandon Squizzato,#,https://github.com/RedHatInsights/clowder/commit/5c112c03f290387a8a834a1beaa18092165ec1eb
-        - 2022-06-01 || Removed usage of simple-kc-client  (HEAD -> master, origin/master, origin/HEAD) || Pete Savage,#,https://github.com/RedHatInsights/clowder/commit/c7d39a3649ac68a5e0958658358f6426d378f50d
+        - 2022-06-06 || Add version into legacy secrets  (HEAD -> master, origin/master, origin/HEAD) || Pete Savage,#,https://github.com/RedHatInsights/clowder/commit/16e66a2c37556feb9d7f8f26a9909169be4d00d0
+        - 2022-06-01 || Removed usage of simple-kc-client  || Pete Savage,#,https://github.com/RedHatInsights/clowder/commit/c7d39a3649ac68a5e0958658358f6426d378f50d
         - 2022-05-27 || Updated keycloak  || Pete Savage,#,https://github.com/RedHatInsights/clowder/commit/7b5ad1202b12d9469f130a8e8c16335d94d000c2
     - provider: github
       url: https://github.com/RedHatInsights/clowder-common-bash
@@ -38,32 +29,22 @@ repos:
     - provider: github
       url: https://github.com/RedHatInsights/tower-analytics-frontend
       branch: devel
-      lastSHA1: 67a95da949e6d8b25267453dd9dcbc5805c4756f
+      lastSHA1: 2af0790ff542213c75278ed625e1c27a62deefc5
       users: []
-      reviewcommits:
-        - '2022-05-31 || Merge pull request #783 from RedHatInsights/AA-1110_module-report-clickable-linking  (HEAD -> devel, origin/devel, origin/HEAD) || Salma Kochay,#,https://github.com/RedHatInsights/tower-analytics-frontend/commit/45083806135c669fbe1e2dd9121f2bd6077dc0a5'
-        - 2022-05-25 || Merge branch 'devel' into AA-1110_module-report-clickable-linking  (origin/AA-1110_module-report-clickable-linking) || Salma Kochay,#,https://github.com/RedHatInsights/tower-analytics-frontend/commit/8c56ac6fb08931acf53654e99d0cb8e3db8ea6ab
-        - 2022-05-23 || Merge branch 'devel' into AA-1110_module-report-clickable-linking  || Salma Kochay,#,https://github.com/RedHatInsights/tower-analytics-frontend/commit/6069056afba3bcfa89f7161854048d32042e2eba
-        - 2022-05-23 || Merge branch 'devel' into AA-1110_module-report-clickable-linking  || Salma Kochay,#,https://github.com/RedHatInsights/tower-analytics-frontend/commit/151fe06b66a4388e6c07ae4316c1db8ed71044af
-        - 2022-05-17 || Merge branch 'devel' into AA-1110_module-report-clickable-linking  || Salma Kochay,#,https://github.com/RedHatInsights/tower-analytics-frontend/commit/beaee7be3154cfc91ab618fa66dd447e56ff1b5c
-        - 2022-04-12 || most used modules clickable linking  || Salma Kochay,#,https://github.com/RedHatInsights/tower-analytics-frontend/commit/a62bc3aa6948bdd820870784a7138aa871dbf474
-        - '2022-06-02 || Merge pull request #802 from RedHatInsights/AA1339_set_chartSeriesHiddenProps  (HEAD -> devel, origin/devel, origin/HEAD) || ZitaNemeckova,#,https://github.com/RedHatInsights/tower-analytics-frontend/commit/abe15278c37230a8af0682fadee848c745cea307'
-        - 2022-05-25 || Set chartSeriesHiddenProps to empty array if not set  (origin/AA1339_set_chartSeriesHiddenProps) || Zita Nemeckova,#,https://github.com/RedHatInsights/tower-analytics-frontend/commit/d5b803fd7452be6b32191ec9377cdf9ffe50fe20
-        - '2022-06-03 || Merge pull request #799 from RedHatInsights/featureflag_package_changes  (HEAD -> devel, origin/devel, origin/HEAD) || Harpreet Kataria,#,https://github.com/RedHatInsights/tower-analytics-frontend/commit/92c58636ce671d12cbf3f6b4ec6958893d0f2551'
-        - 2022-05-19 || Use unleash package for feature flags  (origin/featureflag_package_changes) || Harpreet Kataria,#,https://github.com/RedHatInsights/tower-analytics-frontend/commit/c6ca79d7e355364de7a76790f242ccd052fb6f3f
+      reviewcommits: []
     - provider: github
       url: https://github.com/bsquizz/ocviapy
       branch: master
       lastSHA1: 3e14cc3d9ed0dd562cc45cb75ffb6f0e5cd5f850
       users: []
       reviewcommits:
-        - '2022-05-31 || Merge pull request #3 from bsquizz/watch_rs_and_rc  (HEAD -> main, tag: v1.1.0, origin/main, origin/HEAD) || Brandon Squizzato,#,https://github.com/bsquizz/ocviapy/commit/28d943dbc463debb3004fec2cb6df4d50021289e'
-        - 2022-05-31 || Check for 'watcher' on finally block  (origin/watch_rs_and_rc) || Brandon Squizzato,#,https://github.com/bsquizz/ocviapy/commit/0179e83b83b6a9aae694cf354ece788e75b54c99
-        - 2022-05-31 || Don't return a tuple  || Brandon Squizzato,#,https://github.com/bsquizz/ocviapy/commit/b61f09e5d22eab0e44dd6ab8f303962fbe4ce825
-        - 2022-05-31 || Watch ReplicaSet/ReplicationController for rolling deployments  || Brandon Squizzato,#,https://github.com/bsquizz/ocviapy/commit/d7ae00cfdfd96c48f10790976d305ef7452cae36
         - '2022-06-01 || Merge pull request #4 from bsquizz/watch_rs_and_rc  (HEAD -> main, tag: v1.1.1, origin/main, origin/HEAD) || Brandon Squizzato,#,https://github.com/bsquizz/ocviapy/commit/e725111cabee7e5d2303d8a20473ea47a1c17eac'
         - 2022-05-23 || Support 'label' kwarg for get_all_namespaces  (origin/watch_rs_and_rc) || Brandon Squizzato,#,https://github.com/bsquizz/ocviapy/commit/ea07175fda204ec6aa0d930746c22f6ebba9f2a3
         - 2022-06-01 || Copy dict in case it changes during iteration  || Brandon Squizzato,#,https://github.com/bsquizz/ocviapy/commit/b661287e5fc79d4db964000534899db7732619a0
+        - '2022-05-31 || Merge pull request #3 from bsquizz/watch_rs_and_rc  (tag: v1.1.0) || Brandon Squizzato,#,https://github.com/bsquizz/ocviapy/commit/28d943dbc463debb3004fec2cb6df4d50021289e'
+        - 2022-05-31 || Check for 'watcher' on finally block  || Brandon Squizzato,#,https://github.com/bsquizz/ocviapy/commit/0179e83b83b6a9aae694cf354ece788e75b54c99
+        - 2022-05-31 || Don't return a tuple  || Brandon Squizzato,#,https://github.com/bsquizz/ocviapy/commit/b61f09e5d22eab0e44dd6ab8f303962fbe4ce825
+        - 2022-05-31 || Watch ReplicaSet/ReplicationController for rolling deployments  || Brandon Squizzato,#,https://github.com/bsquizz/ocviapy/commit/d7ae00cfdfd96c48f10790976d305ef7452cae36
     - provider: github
       url: https://github.com/RedHatInsights/landing-page-frontend
       branch: master
@@ -79,7 +60,7 @@ repos:
     - provider: github
       url: https://github.com/RedHatInsights/insights-rbac
       branch: master
-      lastSHA1: e69cda82fe03e19e94118cf8e47dae6e15d6888f
+      lastSHA1: a66bad224eee725c6028ba80c53027c14f204d68
       users: []
       reviewcommits: []
     - provider: github
@@ -91,11 +72,9 @@ repos:
     - provider: github
       url: https://github.com/RedHatInsights/cloud-services-config
       branch: master
-      lastSHA1: 40d64f76cec1e600affc2ae7cd2ca239e46cc84f
+      lastSHA1: 0322204437ca7a7255c94befa53a7a30cbfe15ff
       users: []
-      reviewcommits:
-        - 2022-06-01 || Removing Activation Keys from RHc for now as they are not ready (#1202)  (HEAD -> ci-beta, origin/stage-beta, origin/qa-beta, origin/nightly-beta, origin/ci-beta, origin/HEAD) || Gabi Podolnikova,#,https://github.com/RedHatInsights/cloud-services-config/commit/581ed0d833f578115637f2235d73223b8fdf007d
-        - 2022-06-02 || registering our first ciam app (#1200)  (HEAD -> ci-beta, origin/stage-beta, origin/qa-beta, origin/nightly-beta, origin/ci-beta, origin/HEAD) || Zachary Witter,#,https://github.com/RedHatInsights/cloud-services-config/commit/08ba685530589b93896e3cac76d841c0ae915083
+      reviewcommits: []
     - provider: github
       url: https://github.com/RedHatInsights/ephemeral-namespace-operator
       branch: master
@@ -111,10 +90,9 @@ repos:
     - provider: gitlab
       url: https://gitlab.cee.redhat.com/consoledot/consoledot.pages.redhat.com
       branch: master
-      lastSHA1: 3d43f360dd0af4fff9e2fc80f62a9054f21136f3
+      lastSHA1: 99632dae33a471be6189a2456e651dee8ea80f62
       users: []
-      reviewcommits:
-        - 2022-06-03 || Update ee-benefits.adoc. Removal of the referenced limitation of "Senior" engineers for contributing to clowder.  (HEAD -> main, origin/main, origin/HEAD) || Ryan Abbott,#,https://gitlab.cee.redhat.com/consoledot/consoledot.pages.redhat.com/-/commit/99632dae33a471be6189a2456e651dee8ea80f62
+      reviewcommits: []
     - provider: github
       url: https://github.com/RedHatInsights/rhc-osdk-utils
       branch: master
@@ -124,39 +102,15 @@ repos:
     - provider: gitlab
       url: https://gitlab.cee.redhat.com/automation-analytics/automation-analytics-backend
       branch: main
-      lastSHA1: fea3ef4982e1c8c8fa5b31d930cd30dd2fe7a382
+      lastSHA1: a6f9f1be9e946d7f18aab828594b8be35953a66a
       users: []
-      reviewcommits:
-        - 2022-05-31 || Merge branch 'AA-1110_adding-clickable-linking' into 'main'  (HEAD -> main, origin/main, origin/HEAD) || Salma Kochay,#,https://gitlab.cee.redhat.com/automation-analytics/automation-analytics-backend/-/commit/1b3ba58280662d1c9a8fe0940320ac762b29494f
-        - 2022-05-17 || Adding clickable linking prop to schemas  (origin/AA-1110_adding-clickable-linking) || Salma Kochay,#,https://gitlab.cee.redhat.com/automation-analytics/automation-analytics-backend/-/commit/7d07cd6de593c9b978f137c35ced04e696f2cf2b
-        - 2022-06-01 || Merge branch 'commands-rename' into 'main'  (HEAD -> main, origin/main, origin/HEAD) || Martin Slemr,#,https://gitlab.cee.redhat.com/automation-analytics/automation-analytics-backend/-/commit/e9d356475edf6676ab36c1e4a01f4b3d6d1d8e44
-        - 2022-06-01 || Merge branch 'tower-3-7-5-support' into 'main'  || Martin Slemr,#,https://gitlab.cee.redhat.com/automation-analytics/automation-analytics-backend/-/commit/71820c7017eb2de764df172756634aad46bc7f0a
-        - 2022-05-31 || Ignore Tower 3.7.5 files  || Martin Slemr,#,https://gitlab.cee.redhat.com/automation-analytics/automation-analytics-backend/-/commit/5319bcc8630a5a93508dbfea6f0c380d46fe6e26
-        - 2022-05-31 || Add run_ prefix to worker/job commands  || Martin Slemr,#,https://gitlab.cee.redhat.com/automation-analytics/automation-analytics-backend/-/commit/9489aa64846ceeaebfca1940e889b59f2da74661
-        - 2022-06-01 || Merge branch 'recovery-refactoring' into 'main'  (HEAD -> main, origin/main, origin/HEAD) || Martin Slemr,#,https://gitlab.cee.redhat.com/automation-analytics/automation-analytics-backend/-/commit/5d2ee14025dd596aea86e2b3b76aa3de9fc9575c
-        - 2022-05-31 || New Job top-level class  || Martin Slemr,#,https://gitlab.cee.redhat.com/automation-analytics/automation-analytics-backend/-/commit/556d1e6be2e6aa0cfa8489388fa6b52e25d47a20
-        - '2022-05-31 || Recovery msg: tests refactoring  || Martin Slemr,#,https://gitlab.cee.redhat.com/automation-analytics/automation-analytics-backend/-/commit/02d720692125e049bce4f68bb0aaee7fc953cafd'
-        - '2022-05-31 || Refactoring: Messages recovery  || Martin Slemr,#,https://gitlab.cee.redhat.com/automation-analytics/automation-analytics-backend/-/commit/9a372a7f7a417c926526b1f0215a1d49bc59c07a'
-        - 2022-06-01 || Merge branch 'fix-commands' into 'main'  (HEAD -> main, origin/main, origin/HEAD) || David O Neill,#,https://gitlab.cee.redhat.com/automation-analytics/automation-analytics-backend/-/commit/5d03298a861a5d5b3ba1e5077f71f0ab88e8cd02
-        - 2022-06-01 || Fix previously changed rollups command calls  || Martin Slemr,#,https://gitlab.cee.redhat.com/automation-analytics/automation-analytics-backend/-/commit/e366f6a6196b5b7a5c314064be67d15aa2b422f2
-        - 2022-06-01 || Merge branch 'CVE-2022-24407' into 'main'  (HEAD -> main, origin/main, origin/HEAD) || David O Neill,#,https://gitlab.cee.redhat.com/automation-analytics/automation-analytics-backend/-/commit/665e254ba3ed2680b08e0ca786b3f977538cde3c
-        - '2022-06-01 || CVE-2022-24407 cyrus-sasl: failure to properly escape SQL input  || David O Neill,#,https://gitlab.cee.redhat.com/automation-analytics/automation-analytics-backend/-/commit/5ce0278648e27c7becbfcd4bedef5819a086b143'
-        - 2022-06-01 || Merge branch 'revert-665e254b' into 'main'  (HEAD -> main, origin/main, origin/HEAD) || David O Neill,#,https://gitlab.cee.redhat.com/automation-analytics/automation-analytics-backend/-/commit/a41a8eed2811d0854f5aae2c195dbf02dd705c06
-        - 2022-06-01 || Revert "Merge branch 'CVE-2022-24407' into 'main'"  (origin/revert-665e254b) || David O Neill,#,https://gitlab.cee.redhat.com/automation-analytics/automation-analytics-backend/-/commit/bd99735dbb6ac038fdba2924b52f6cc7d6dac4ae
-        - 2022-06-02 || Merge branch 'fix_tenants_metrics' into 'main'  (HEAD -> main, origin/main, origin/HEAD) || Martin Slemr,#,https://gitlab.cee.redhat.com/automation-analytics/automation-analytics-backend/-/commit/2e8419277140f95212c158024438c7d33cf33bff
-        - '2022-06-01 || specify the new file name: ''run_tenants_metrics.py''  || Aparna Karve,#,https://gitlab.cee.redhat.com/automation-analytics/automation-analytics-backend/-/commit/d83ce488359edcd89f064a2add7427d97f5cf279'
-        - 2022-06-02 || Merge branch 'events-table-1-5-support' into 'main'  (HEAD -> main, origin/main, origin/HEAD) || David O Neill,#,https://gitlab.cee.redhat.com/automation-analytics/automation-analytics-backend/-/commit/1dc3cb1db63e4c4de1383867e1285d6191c7f05c
-        - 2022-06-02 || Events_table.csv 1.5 support  || Martin Slemr,#,https://gitlab.cee.redhat.com/automation-analytics/automation-analytics-backend/-/commit/4f3defbd0baebe977f647d336d3d4498e540a9bb
-        - 2022-06-02 || Merge branch 'fix_name_filter_by_slug' into 'main'  (HEAD -> main, origin/main, origin/HEAD) || Aparna Karve,#,https://gitlab.cee.redhat.com/automation-analytics/automation-analytics-backend/-/commit/a6f9f1be9e946d7f18aab828594b8be35953a66a
-        - 2022-06-02 || specify the slug to filter out a name  || Aparna Karve,#,https://gitlab.cee.redhat.com/automation-analytics/automation-analytics-backend/-/commit/2efcfac8dd00c45597c9ebb970a3397578250b21
+      reviewcommits: []
     - provider: gitlab
       url: https://gitlab.cee.redhat.com/automation-analytics/pdf-generator
       branch: main
-      lastSHA1: 9dc52267f848fb47bb7d72131a22d4e003f9b760
+      lastSHA1: 65f724b566af535d608c04bfe725bc7705693a70
       users: []
-      reviewcommits:
-        - 2022-06-01 || Merge branch 'AA-1066_roi-sort-info' into 'main'  (HEAD -> main, origin/main, origin/HEAD) || Salma Kochay,#,https://gitlab.cee.redhat.com/automation-analytics/pdf-generator/-/commit/65f724b566af535d608c04bfe725bc7705693a70
-        - 2022-05-31 || Show ROI sort info  (origin/AA-1066_roi-sort-info) || Salma Kochay,#,https://gitlab.cee.redhat.com/automation-analytics/pdf-generator/-/commit/907641e3cfebed150cd80425cafaa8352a51a38a
+      reviewcommits: []
     - provider: gitlab
       url: https://gitlab.cee.redhat.com/service/app-interface
       branch: master
@@ -164,50 +118,94 @@ repos:
       users:
         - user: psavage
           lastSHA1: 142e44ce568ad2ca45ef7b93620b1e242052fb90
-          reviewcommits: []
+          reviewcommits:
+            - 2022-06-06 || Fixed namespaces + config  || Pete Savage,#,https://gitlab.cee.redhat.com/service/app-interface/-/commit/979383bca693978474d43ce61444e6c5907d8c45
         - user: bsquizza
           lastSHA1: 0b8814d2dd42ab62716bd9a782ca920a03fbac0d
-          reviewcommits: []
+          reviewcommits:
+            - 2022-06-06 || Promote clowder stage->prod  || Brandon Squizzato,#,https://gitlab.cee.redhat.com/service/app-interface/-/commit/8f0419b353ba801a446eb5407997350cd375f11e
       reviewcommits: []
     - provider: gitlab
       url: https://gitlab.cee.redhat.com/insights-platform/frontend-configs
       branch: master
       lastSHA1: 8e41da8a4e6a0ee5a47f1472a269b5e5b4e7d6d5
       users: []
-      reviewcommits: []
+      reviewcommits:
+        - 2022-06-06 || Merge branch 'mzalewsk/subscriptions-menus' into 'main'  (HEAD -> main, origin/main, origin/HEAD) || bsquizza,#,https://gitlab.cee.redhat.com/insights-platform/frontend-configs/-/commit/f1c2b2a500e0349b9a475c7c251fb9d1e05dd3ab
+        - 2022-06-06 || Merge branch 'bholifie-main-patch-29102' into 'main'  || bsquizza,#,https://gitlab.cee.redhat.com/insights-platform/frontend-configs/-/commit/c98d0363164d2a550eccf0a5c2e51ae6be40b6fe
+        - 2022-06-06 || Bump chrome ref  || Blake Holifield,#,https://gitlab.cee.redhat.com/insights-platform/frontend-configs/-/commit/54531944e545787c2e95f7dae8530b9ba8f671f4
+        - 2022-05-13 || Create application-services and openshift bundles  || Mirek Długosz,#,https://gitlab.cee.redhat.com/insights-platform/frontend-configs/-/commit/af4ae826f3b75585789dba57c8ef57a22b84eab8
     - provider: gitlab
       url: https://gitlab.cee.redhat.com/insights-qe/iqe-core
       branch: master
       lastSHA1: 6e34cce5bd266791f1a3196d2d71278eabf0ed14
       users: []
       reviewcommits:
-        - '2022-06-01 || Merge branch ''bump_ocviapy'' into ''master''  (HEAD -> master, tag: v22.06.01.0, origin/master, origin/HEAD) || Dmitry Misharov,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/bf510a85cc215941c20f5fe4352851b5226a9abe'
+        - 2022-06-06 || Merge branch 'update-env-parser' into 'master'  (HEAD -> master, origin/master, origin/HEAD) || Dmitry Misharov,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/92572d58bba8d6d17de7b5103ba84e7f6c5c0de7
+        - 2022-06-06 || Update env_parser to work with iqe-keycloak-plugin  || Angelina Vasileva,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/5aed24c06c7f0867c9f00cfd67eb04fefbc922fa
+        - 2022-06-03 || Merge branch 'rsnyman/plugin-users' into 'master'  || Dmitry Misharov,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/3624ee9326156eeb3d47ba688bb61ab4335729fe
+        - '2022-06-03 || IQE-1476: Provide a way for plugins to override the default user when running the tests  || Raoul Snyman,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/21718ff8a2b4f7e2b9d10956835aed457ff4e511'
+        - 2022-06-02 || Merge branch 'ronny/IQE-587-nomore-globals' into 'master'  || Dmitry Misharov,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/1e4144d12eddb690791dd44a43de690dc901f008
+        - 2022-06-02 || removal of get_settings usage and lazy loading of config/application  || Ronny Pfannschmidt,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/cc7fb5ffaca67ea3ed23443961cdfedce6409fbb
+        - 2022-06-02 || Merge branch 'delete-initial-steps' into 'master'  || Dmitry Misharov,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/ad752d405bcc6344fdeff854f9e806c29483a56f
+        - 2022-06-02 || Delete Initial Steps.ipynb  (origin/delete-initial-steps) || Dmitry Misharov,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/ebed8174a5983d6ed0baaefb6d05d02188a3e0d6
+        - 2022-06-02 || Merge branch 'remove-contributing' into 'master'  || Dmitry Misharov,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/2a89a53d2bc3e6bf74f731b11c39ea011bedf1d9
+        - 2022-06-02 || Removed non-existing CONTRIBUTING.rst  (origin/remove-contributing) || Dmitry Misharov,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/5f26bc789e5aed61e129ff644c9561199f907561
+        - 2022-06-02 || Merge branch 'ronny/fix-1388' into 'master'  || Dmitry Misharov,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/2adf5a4dc9af5b4d431c84b74f18e6afe233f072
+        - '2022-06-02 || IQE-1388: fix pytest 7 support  || Ronny Pfannschmidt,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/e7c20b3d680b666d91294937052b2915413a953d'
+        - 2022-06-01 || Merge branch 'dockerfile-linter' into 'master'  || Dmitry Misharov,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/fee63173f9fa7647a3bb4e305bf28b273fafdd4f
+        - 2022-06-01 || Add Dockerfile linter  || Victor Mugica Gomez,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/c649fe6cf6f97af9aa7f3fdbb03330cb9bedee08
+        - '2022-06-01 || Merge branch ''bump-deprecation-date'' into ''master''  (tag: v22.06.01.1) || Dmitry Misharov,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/98776e46382ce209e9ae914576cb5abf99fd1f53'
+        - 2022-06-01 || Bumped deprecation date for DEPRECATE_APPLICATION_VARIABLE  (origin/bump-deprecation-date) || Dmitry Misharov,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/db4bc8c10ab6d601ddbd190e06de6d9a5a98806b
+        - '2022-06-01 || Merge branch ''bump_ocviapy'' into ''master''  (tag: v22.06.01.0) || Dmitry Misharov,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/bf510a85cc215941c20f5fe4352851b5226a9abe'
         - 2022-05-31 || Merge branch 'handle-podman-patch-shellcheck' into 'master'  || Dmitry Misharov,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/cde3510ae30742b5a30369997e35e061061d4d92
         - 2022-05-31 || Fix iqe.sh according to shellcheck and add it to linters  || Victor Mugica Gomez,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/86ca37b5ceb8b7c4f87161dcb979bc6ff01b6502
         - 2022-05-31 || Bump ocviapy to v1.1.0  (origin/bump_ocviapy) || Brandon Squizzato,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/e2c5aabfe6ffbf732381e65e48d5d6b7fc6e76b0
-        - 2022-06-01 || Merge branch 'bump-deprecation-date' into 'master'  (HEAD -> master, origin/master, origin/HEAD) || Dmitry Misharov,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/98776e46382ce209e9ae914576cb5abf99fd1f53
-        - 2022-06-01 || Bumped deprecation date for DEPRECATE_APPLICATION_VARIABLE  (origin/bump-deprecation-date) || Dmitry Misharov,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/db4bc8c10ab6d601ddbd190e06de6d9a5a98806b
-        - 2022-06-01 || Merge branch 'dockerfile-linter' into 'master'  (HEAD -> master, origin/master, origin/HEAD) || Dmitry Misharov,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/fee63173f9fa7647a3bb4e305bf28b273fafdd4f
-        - 2022-06-01 || Add Dockerfile linter  || Victor Mugica Gomez,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/c649fe6cf6f97af9aa7f3fdbb03330cb9bedee08
-        - 2022-06-02 || Merge branch 'ronny/fix-1388' into 'master'  (HEAD -> master, origin/master, origin/HEAD) || Dmitry Misharov,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/2adf5a4dc9af5b4d431c84b74f18e6afe233f072
-        - '2022-06-02 || IQE-1388: fix pytest 7 support  || Ronny Pfannschmidt,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/e7c20b3d680b666d91294937052b2915413a953d'
-        - 2022-06-02 || Merge branch 'remove-contributing' into 'master'  (HEAD -> master, origin/master, origin/HEAD) || Dmitry Misharov,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/2a89a53d2bc3e6bf74f731b11c39ea011bedf1d9
-        - 2022-06-02 || Removed non-existing CONTRIBUTING.rst  (origin/remove-contributing) || Dmitry Misharov,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/5f26bc789e5aed61e129ff644c9561199f907561
-        - 2022-06-02 || Merge branch 'delete-initial-steps' into 'master'  (HEAD -> master, origin/master, origin/HEAD) || Dmitry Misharov,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/ad752d405bcc6344fdeff854f9e806c29483a56f
-        - 2022-06-02 || Delete Initial Steps.ipynb  (origin/delete-initial-steps) || Dmitry Misharov,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/ebed8174a5983d6ed0baaefb6d05d02188a3e0d6
-        - 2022-06-02 || Merge branch 'ronny/IQE-587-nomore-globals' into 'master'  (HEAD -> master, origin/master, origin/HEAD) || Dmitry Misharov,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/1e4144d12eddb690791dd44a43de690dc901f008
-        - 2022-06-02 || removal of get_settings usage and lazy loading of config/application  || Ronny Pfannschmidt,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/cc7fb5ffaca67ea3ed23443961cdfedce6409fbb
-        - 2022-06-03 || Merge branch 'rsnyman/plugin-users' into 'master'  (HEAD -> master, origin/master, origin/HEAD) || Dmitry Misharov,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/3624ee9326156eeb3d47ba688bb61ab4335729fe
-        - '2022-06-03 || IQE-1476: Provide a way for plugins to override the default user when running the tests  || Raoul Snyman,#,https://gitlab.cee.redhat.com/insights-qe/iqe-core/-/commit/21718ff8a2b4f7e2b9d10956835aed457ff4e511'
     - provider: gitlab
       url: https://gitlab.cee.redhat.com/insights-qe/iqe-platform-ui-plugin
       branch: master
-      lastSHA1: 003fef45b6695631961af4145f984ab812e21563
+      lastSHA1: e987bfc6d623178c339cf1c4d84e217f4dbe155b
       users: []
       reviewcommits: []
     - provider: github
       url: https://github.com/RedHatInsights/insights-dashboard.git
       branch: master
       lastSHA1: f6c136e07cffb113866faa7bbc16c1cd410dfc0a
+      users: []
+      reviewcommits: []
+    - provider: github
+      url: https://github.com/RedHatInsights/insights-chrome
+      branch: main
+      lastSHA1: f717fc8b1fd1db62520bfd20b697ba25af03ec77
+      users: []
+      reviewcommits: []
+    - provider: github
+      url: https://github.com/RedHatInsights/frontend-components
+      branch: main
+      lastSHA1: 3b4ef4b54e5a4fcb2b9b3c18a7e90f546711871a
+      users: []
+      reviewcommits: []
+    - provider: github
+      url: https://github.com/RedHatInsights/insights-frontend-builder-common
+      branch: main
+      lastSHA1: 6e682b189d884e9e3651753704671ff483d6d0a2
+      users: []
+      reviewcommits: []
+    - provider: github
+      url: https://github.com/RedHatInsights/api-frontend.git
+      branch: main
+      lastSHA1: 8562b5435bff8bfc734b95732b1c647c147bb764
+      users: []
+      reviewcommits: []
+    - provider: github
+      url: https://gitlab.cee.redhat.com/insights-platform/frontend-build-container.git
+      branch: main
+      lastSHA1: ""
+      users: []
+      reviewcommits: []
+    - provider: github
+      url: https://gitlab.cee.redhat.com/insights-platform/fakamai-assets-server.git
+      branch: main
+      lastSHA1: ""
       users: []
       reviewcommits: []
