@@ -132,7 +132,6 @@ func print_commits(index int, name string, url string, sha1 string, provider str
 	}
 	for i := 0; i < len(commits)-1; i++ {
 		if isCommitInCommits(string(commits[i]), repos.Repos[index].ReviewCommits) {
-			stream_print("     .. dupe")
 			continue
 		}
 		if provider == "github" {
@@ -163,8 +162,7 @@ func print_commits_user(index int, user_index int, name string, url string, user
 		stream_print("")
 	}
 	for i := 0; i < len(commits)-1; i++ {
-		if isCommitInCommits(string(commits[i])[1:41], repos.Repos[index].ReviewCommits) {
-			stream_print("     .. dupe")
+		if isCommitInCommits(string(commits[i])[1:41], repos.Repos[index].Users[user_index].ReviewCommits) {
 			continue
 		}
 		if provider == "github" {
