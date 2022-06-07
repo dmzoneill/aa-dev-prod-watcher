@@ -3,6 +3,11 @@ body {
     font-family: "Courier New", monospace !important
 }
 
+#reviewFrame {
+    width: 100%; 
+    height: 600px
+}
+
 .configState, .serverLog, .config {
     width: 1550px;
     padding: 12px 20px;

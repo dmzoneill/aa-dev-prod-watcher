@@ -12,6 +12,11 @@ build:
 
 docker-build:
 	docker build -f build/Dockerfile -t scm .
+	{ \
+		TAG=`docker images scm -q`; \
+		docker tag $$TAG feeditout/scmwatcher; \
+		docker push feeditout/scmwatcher; \
+	}
 
 docker-run:
 	- docker rm -f scm
