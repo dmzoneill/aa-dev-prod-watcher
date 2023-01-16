@@ -1,4 +1,4 @@
-name: aa-dev-prod-watcher
+name: CICD
 
 on:
   push:
