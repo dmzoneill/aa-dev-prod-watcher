@@ -1,11 +1,12 @@
 # aa-dev-prod-watcher
 
-React, TypeScript, Golang and webpack solution to monitor and reivew upstream project commits 
+React, TypeScript, Golang and webpack solution to monitor and reivew upstream project commits
 
 ## Run method 1
 
 Pull from docker hub and run
-```
+
+```bash
 # CORS and google-chrome
 
 echo "127.0.0.1 localho.st" >> /etc/hosts
@@ -18,7 +19,8 @@ docker run -d --name docker.io/feeditout/scmwatcher -p 8080:8080 -p 1323:1323 sc
 ## Run method 2
 
 Pull from docker hub and run
-```
+
+```bash
 # CORS and google-chrome
 
 echo "127.0.0.1 localho.st" >> /etc/hosts
@@ -33,7 +35,8 @@ make docker-run
 ## Run method 3
 
 Run the applications locally
-```
+
+```bash
 echo "127.0.0.1 localho.st" >> /etc/hosts
 
 # console 1
