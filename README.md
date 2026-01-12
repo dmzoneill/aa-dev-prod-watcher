@@ -1,6 +1,6 @@
 # aa-dev-prod-watcher
 
-React, Typescript, Golang and webpack solution to monitor and reivew upstream project commits 
+React, TypeScript, Golang and webpack solution to monitor and reivew upstream project commits 
 
 ## Run method 1
 
