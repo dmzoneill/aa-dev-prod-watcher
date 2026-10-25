@@ -28,7 +28,6 @@
     "@types/jest": "^30.0.0",
     "@types/node": "^26.6.5",
     "axios": "^1.20.0",
-    "babel-cli": "^6.26.0",
     "babel-preset-react-app": "^10.1.0",
     "js-yaml": "^5.5.0",
     "react": "latest",
