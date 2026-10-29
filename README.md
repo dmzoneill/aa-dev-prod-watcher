@@ -15,7 +15,7 @@ Pull from Docker hub and run
 
 echo "127.0.0.1 localho.st" >> /etc/hosts
 
-docker run -d --name docker.io/feeditout/scmwatcher -p 80.0.12180 -p 1323:1323 scm
+docker run -d --name docker.io/feeditout/scmwatcher -p 80.0.12280 -p 1323:1323 scm
 
 # Open your web browser to http://localhost:8080
 ```
