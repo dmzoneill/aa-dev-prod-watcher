@@ -26,8 +26,8 @@
     "@mui/material": "^9.5.0",
     "@mui/styled-engine-sc": "^9.5.0",
     "@types/jest": "^30.0.0",
-    "@types/node": "^26.6.5",
-    "axios": "^1.20.0",
+    "@types/node": "^26.6.6",
+    "axios": "^1.21.0",
     "babel-preset-react-app": "^10.1.0",
     "js-yaml": "^5.5.0",
     "react": "latest",
@@ -55,7 +55,7 @@
     "tsc-watch": "^7.2.1",
     "typescript": "^7.0.2",
     "webpack": "^5.112.2",
-    "webpack-cli": "^7.2.3",
+    "webpack-cli": "^7.3.1",
     "webpack-dev-server": "^6.1.0"
   }
 }
